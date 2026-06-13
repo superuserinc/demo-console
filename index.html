@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#0A0E13; }
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-thumb{ background:#222d38; border-radius:5px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  @keyframes spydarPulse{ 0%{ opacity:.95; } 50%{ opacity:.35; } 100%{ opacity:.95; } }
+  @keyframes spydarRing{ 0%{ transform:scale(.7); opacity:.7; } 100%{ transform:scale(2.1); opacity:0; } }
+  @keyframes spydarBlink{ 0%,100%{ opacity:1; } 50%{ opacity:.25; } }
+  @keyframes spydarSweep{ from{ transform:translate(-50%,-50%) rotate(0deg); } to{ transform:translate(-50%,-50%) rotate(360deg); } }
+</style>
+</helmet>
+<div style="height:100vh; width:100%; display:flex; flex-direction:column; background:#0A0E13; color:#E6EDF3; font-family:'IBM Plex Sans',system-ui,sans-serif; overflow:hidden; font-size:13px;">
+
+  <!-- CLASSIFICATION BANNER -->
+  <div style="height:22px; flex:none; display:flex; align-items:center; justify-content:center; background:#15321f; border-bottom:1px solid #1d4a2c; letter-spacing:.22em; font-size:10px; font-weight:600; color:#7fdfa6; font-family:'IBM Plex Mono',monospace;">
+    UNCLASSIFIED // PROPRIETARY — HANDLE VIA SPYDAR CHANNELS
+  </div>
+
+  <!-- STATUS STRIP -->
+  <div style="height:46px; flex:none; display:flex; align-items:center; gap:0; background:#0C1218; border-bottom:1px solid #1E2832; padding:0 16px;">
+    <div style="display:flex; align-items:center; gap:10px; min-width:230px;">
+      <div style="width:24px; height:24px; border-radius:5px; background:linear-gradient(135deg,#2FD4E0,#1b8b95); display:flex; align-items:center; justify-content:center; box-shadow:0 0 14px rgba(47,212,224,.35);">
+        <div style="width:11px; height:11px; border:2px solid #06222a; border-radius:50%; position:relative;"></div>
+      </div>
+      <div style="line-height:1.1;">
+        <div style="font-weight:700; letter-spacing:.04em; font-size:13px;">SPYDAR <span style="color:#2FD4E0;">PERCEPTION</span></div>
+        <div style="font-size:9.5px; color:#5C6773; letter-spacing:.14em; font-family:'IBM Plex Mono',monospace;">C-UAS // PERCEPTION-ONLY</div>
+      </div>
+    </div>
+
+    <div style="width:1px; height:24px; background:#1E2832; margin:0 16px;"></div>
+
+    <div style="display:flex; align-items:center; gap:26px; flex:1;">
+      <div>
+        <div style="font-size:9px; color:#5C6773; letter-spacing:.14em;">SITE / SECTOR</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#C2D0DE; letter-spacing:.04em;">FOB&nbsp;HORIZON · SECTOR&nbsp;NE-4</div>
+      </div>
+      <div>
+        <div style="font-size:9px; color:#5C6773; letter-spacing:.14em;">ZULU</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#2FD4E0; letter-spacing:.04em;">{{ zulu }}</div>
+      </div>
+      <div>
+        <div style="font-size:9px; color:#5C6773; letter-spacing:.14em;">POSTURE</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#F2A93B; letter-spacing:.04em;">WEAPONS&nbsp;TIGHT · OBSERVE</div>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div style="display:flex; align-items:center; gap:8px; padding:5px 10px; border:1px solid #1E2832; border-radius:6px; background:#0E141B;">
+        <span style="font-size:9px; color:#5C6773; letter-spacing:.12em;">SENSORS</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; color:#4FD995;">3</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5C6773;">/ 5 LIVE</span>
+        <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#4FD995; box-shadow:0 0 8px #4FD995; animation:spydarBlink 2.4s infinite;"></span>
+      </div>
+      <div style="display:flex; align-items:center; gap:7px; padding:5px 10px; border:1px solid #1d3a3d; border-radius:6px; background:rgba(47,212,224,.06);">
+        <svg width="12" height="13" viewBox="0 0 12 13" fill="none"><path d="M6 1L10.5 3v3.5c0 3-2 4.7-4.5 5.5C3 11.2 1.5 9.5 1.5 6.5V3L6 1z" stroke="#2FD4E0" stroke-width="1.2"/></svg>
+        <span style="font-size:10px; color:#2FD4E0; letter-spacing:.1em; font-weight:600;">ON-PREM · SOVEREIGN</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN ROW -->
+  <div style="flex:1; display:flex; min-height:0;">
+
+    <!-- LEFT NAV RAIL -->
+    <div style="width:76px; flex:none; background:#0C1218; border-right:1px solid #1E2832; display:flex; flex-direction:column; align-items:center; padding:12px 0;">
+      <div style="display:flex; flex-direction:column; gap:6px; width:100%; align-items:center;">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+          <button onClick="{{ n.onClick }}" title="{{ n.title }}" style="{{ n.style }}">
+            <span style="display:flex; align-items:center; justify-content:center; height:22px;">{{ n.icon }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:.06em;">{{ n.num }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="flex:1;"></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px; width:100%; padding-top:12px; border-top:1px solid #1E2832;">
+        <div title="System health: OK" style="width:42px; height:42px; border-radius:50%; border:1.5px solid #1f4a3a; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(79,217,149,.06);">
+          <span style="display:block; width:9px; height:9px; border-radius:50%; background:#4FD995; box-shadow:0 0 8px #4FD995;"></span>
+          <span style="font-size:7.5px; color:#4FD995; letter-spacing:.1em; margin-top:3px;">SYS&nbsp;OK</span>
+        </div>
+        <div title="Controlled assets stay on-prem" style="width:30px; height:30px; border-radius:7px; border:1px solid #1E2832; display:flex; align-items:center; justify-content:center; background:#0E141B;">
+          <svg width="13" height="14" viewBox="0 0 13 14" fill="none"><rect x="2" y="6" width="9" height="6.5" rx="1.3" stroke="#8A97A6" stroke-width="1.1"/><path d="M4 6V4.3a2.5 2.5 0 015 0V6" stroke="#8A97A6" stroke-width="1.1"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SURFACE CONTENT ===================== -->
+
+    <!-- 01 · LIVE OPS CONSOLE -->
+    <sc-if value="{{ isLive }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1; display:flex; min-width:0;">
+      <!-- center: canvas + track list -->
+      <div style="flex:1; display:flex; flex-direction:column; min-width:0; background:#0A0E13;">
+        <!-- surface header -->
+        <div style="height:48px; flex:none; display:flex; align-items:center; gap:14px; padding:0 18px; border-bottom:1px solid #1E2832;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:.02em;">Live Operations Console</div>
+          <div style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em;">REAL-TIME TACTICAL PICTURE</div>
+          <div style="flex:1;"></div>
+          <!-- view toggle -->
+          <div style="display:flex; background:#0E141B; border:1px solid #1E2832; border-radius:7px; padding:2px; gap:2px;">
+            <button onClick="{{ setMap }}" style="{{ mapBtn }}">MAP</button>
+            <button onClick="{{ setFeed }}" style="{{ feedBtn }}">EO&nbsp;FEED</button>
+          </div>
+        </div>
+
+        <!-- canvas -->
+        <div style="flex:1; position:relative; min-height:0; padding:16px;">
+          <!-- MAP VIEW -->
+          <sc-if value="{{ isMap }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute; inset:16px; border:1px solid #16202a; border-radius:10px; background:radial-gradient(circle at 50% 50%, #0c151c 0%, #0a0e13 70%); overflow:hidden;">
+            <!-- grid -->
+            <div style="position:absolute; inset:0; background-image:linear-gradient(#11202a 1px,transparent 1px),linear-gradient(90deg,#11202a 1px,transparent 1px); background-size:46px 46px; opacity:.5;"></div>
+            <!-- centered square radar field (keeps rings circular + centered on asset) -->
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); height:96%; aspect-ratio:1;">
+              <!-- range rings -->
+              <div style="position:absolute; left:50%; top:50%; width:91%; height:91%; transform:translate(-50%,-50%); border:1px solid #1b3038; border-radius:50%; opacity:.7;"></div>
+              <div style="position:absolute; left:50%; top:50%; width:60.7%; height:60.7%; transform:translate(-50%,-50%); border:1px solid #1b3038; border-radius:50%; opacity:.8;"></div>
+              <div style="position:absolute; left:50%; top:50%; width:30.3%; height:30.3%; transform:translate(-50%,-50%); border:1px solid #1b3038; border-radius:50%; opacity:.9;"></div>
+              <div style="position:absolute; left:50%; top:6.5%; font-family:'IBM Plex Mono',monospace; font-size:9px; color:#3a4a56; transform:translateX(-50%);">3.0 km</div>
+              <div style="position:absolute; left:50%; top:21.2%; font-family:'IBM Plex Mono',monospace; font-size:9px; color:#3a4a56; transform:translateX(-50%);">2.0 km</div>
+              <div style="position:absolute; left:50%; top:36%; font-family:'IBM Plex Mono',monospace; font-size:9px; color:#3a4a56; transform:translateX(-50%);">1.0 km</div>
+              <!-- crosshair lines -->
+              <div style="position:absolute; left:50%; top:2%; bottom:2%; width:1px; background:#16242d; transform:translateX(-50%);"></div>
+              <div style="position:absolute; top:50%; left:2%; right:2%; height:1px; background:#16242d; transform:translateY(-50%);"></div>
+              <div style="position:absolute; left:50%; top:1%; font-family:'IBM Plex Mono',monospace; font-size:9px; color:#3a4a56; transform:translate(-50%,-100%);">N</div>
+              <!-- radar sweep -->
+              <div style="position:absolute; left:50%; top:50%; width:91%; height:91%; transform:translate(-50%,-50%); border-radius:50%; pointer-events:none; background:conic-gradient(from 0deg, rgba(47,212,224,.12), transparent 32%); animation:spydarSweep 7s linear infinite;"></div>
+              <!-- defended asset at center -->
+              <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; z-index:3;">
+                <div style="width:16px; height:16px; border:2px solid #2FD4E0; transform:rotate(45deg); background:rgba(47,212,224,.18); box-shadow:0 0 12px rgba(47,212,224,.5);"></div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; color:#2FD4E0; letter-spacing:.1em; margin-top:5px;">ASSET</div>
+              </div>
+              <!-- tracks (animated) -->
+              {{ mapMarkers }}
+            </div>
+            <!-- map legend -->
+            <div style="position:absolute; left:14px; bottom:12px; display:flex; flex-direction:column; gap:5px; background:rgba(8,12,16,.7); border:1px solid #16202a; border-radius:7px; padding:9px 11px;">
+              <div style="font-size:8.5px; color:#5C6773; letter-spacing:.12em; margin-bottom:1px;">POSTURE</div>
+              <div style="display:flex; align-items:center; gap:7px; font-size:10px;"><span style="width:9px;height:9px;background:#F2555A;transform:rotate(45deg);display:inline-block;"></span>Hostile</div>
+              <div style="display:flex; align-items:center; gap:7px; font-size:10px;"><span style="width:9px;height:9px;border:1.5px solid #F2A93B;transform:rotate(45deg);display:inline-block;"></span>Unknown · open-set</div>
+              <div style="display:flex; align-items:center; gap:7px; font-size:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#4FD995;display:inline-block;"></span>Friendly</div>
+              <div style="display:flex; align-items:center; gap:7px; font-size:10px;"><span style="width:9px;height:9px;border-radius:50%;border:1px dashed #6E7B88;display:inline-block;"></span>Radar cue · planned</div>
+              <div style="display:flex; align-items:center; gap:7px; font-size:10px; color:#5C6773;"><span style="font-family:'IBM Plex Mono',monospace;">✕</span>Clutter · rejected</div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- FEED VIEW -->
+          <sc-if value="{{ isFeed }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; inset:16px; border:1px solid #16202a; border-radius:10px; background:linear-gradient(180deg,#0e1922 0%,#0a1016 55%,#0c1118 100%); overflow:hidden;">
+            <!-- sky gradient + faint clouds -->
+            <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 30% 20%, rgba(60,90,110,.25), transparent 60%);"></div>
+            <!-- feed HUD frame -->
+            <div style="position:absolute; inset:0; pointer-events:none;">
+              <div style="position:absolute; top:14px; left:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4FD995; letter-spacing:.08em;">● REC&nbsp;&nbsp;EO · 1920×1080 · 30fps</div>
+              <div style="position:absolute; top:14px; right:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8A97A6;">GIMBAL&nbsp;AZ&nbsp;028.4° EL&nbsp;+06.1°</div>
+              <div style="position:absolute; bottom:14px; left:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8A97A6;">f/4.0 · 1/2000s · ISO&nbsp;400</div>
+              <!-- corner ticks -->
+              <div style="position:absolute; top:34px; left:14px; width:18px; height:18px; border-left:1px solid #2a3a44; border-top:1px solid #2a3a44;"></div>
+              <div style="position:absolute; bottom:34px; right:14px; width:18px; height:18px; border-right:1px solid #2a3a44; border-bottom:1px solid #2a3a44;"></div>
+            </div>
+            {{ feedOverlay }}
+            <!-- IR PiP -->
+            <div style="position:absolute; right:16px; bottom:16px; width:150px; height:96px; border:1px solid #2a3a44; border-radius:6px; overflow:hidden; background:#0a0d11;">
+              <div style="position:absolute; inset:0; background:radial-gradient(circle at 56% 42%, #b54a18 0%, #5a2410 14%, #1a1530 40%, #0a0d20 75%);"></div>
+              <div style="position:absolute; top:6px; left:7px; font-family:'IBM Plex Mono',monospace; font-size:8.5px; color:#F2A93B; letter-spacing:.06em;">IR · DETECT</div>
+              <div style="position:absolute; left:50%; top:40%; width:22px; height:14px; border:1px solid #F2A93B; transform:translate(-50%,-50%);"></div>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+
+        <!-- TRACK LIST -->
+        <div style="flex:none; height:212px; border-top:1px solid #1E2832; background:#0C1218; display:flex; flex-direction:column;">
+          <div style="height:34px; flex:none; display:flex; align-items:center; gap:12px; padding:0 16px; border-bottom:1px solid #16202a;">
+            <span style="font-size:11px; font-weight:600; letter-spacing:.06em;">ACTIVE TRACKS</span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#2FD4E0;">{{ trackCount }}</span>
+            <div style="flex:1;"></div>
+            <span style="font-size:9px; color:#5C6773; letter-spacing:.1em;">SORT ▾ THREAT PRIORITY</span>
+          </div>
+          <!-- column header -->
+          <div style="height:24px; flex:none; display:grid; grid-template-columns:46px minmax(108px,1.5fr) 88px 66px 48px 82px; gap:6px; align-items:center; padding:0 12px; font-size:8.5px; color:#5C6773; letter-spacing:.1em; border-bottom:1px solid #11191f;">
+            <div>TRACK</div><div>VERDICT</div><div>INTENT</div><div>CONF</div><div>FAN</div><div>STATE</div>
+          </div>
+          <div style="flex:1; overflow-y:auto;">
+            <sc-for list="{{ trackRows }}" as="r" hint-placeholder-count="5">
+              <div onClick="{{ r.onSelect }}" style="{{ r.rowStyle }}">
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <span style="width:3px; height:26px; border-radius:2px; background:{{ r.color }};"></span>
+                  <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#C2D0DE;">{{ r.id }}</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:2px; min-width:0;">
+                  <span style="font-size:12.5px; font-weight:600; color:{{ r.verdictColor }}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</span>
+                  <span style="font-size:9.5px; color:#6b7785; font-family:'IBM Plex Mono',monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.cat }}</span>
+                </div>
+                <div>{{ r.intentChip }}</div>
+                <div>{{ r.confBar }}</div>
+                <div>{{ r.fanGlyph }}</div>
+                <div>{{ r.stateChip }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT CONTEXT PANEL -->
+      <div style="width:340px; flex:none; background:#0C1218; border-left:1px solid #1E2832; display:flex; flex-direction:column; min-height:0;">
+        <div style="height:48px; flex:none; display:flex; align-items:center; gap:9px; padding:0 16px; border-bottom:1px solid #1E2832;">
+          <span style="width:8px; height:8px; border-radius:50%; background:{{ sel.color }}; box-shadow:0 0 8px {{ sel.color }};"></span>
+          <span style="font-size:11px; font-weight:600; letter-spacing:.05em;">SELECTED TRACK</span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#C2D0DE;">{{ sel.id }}</span>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:16px;">
+          <!-- verdict -->
+          <sc-if value="{{ sel.spoof }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:8px; padding:8px 11px; margin-bottom:12px; border:1px solid #5a2024; border-radius:7px; background:rgba(242,85,90,.12);">
+              <span style="font-size:14px;">⚠</span>
+              <span style="font-size:10.5px; color:#F2555A; font-weight:600; letter-spacing:.04em;">ANTI-SPOOF — SIZE CROSS-CHECK DIVERGES</span>
+            </div>
+          </sc-if>
+          <div style="font-size:9px; color:#5C6773; letter-spacing:.14em; margin-bottom:5px;">VERDICT</div>
+          <div style="font-size:23px; font-weight:700; letter-spacing:.01em; color:{{ sel.verdictColor }}; line-height:1.05;">{{ sel.name }}</div>
+          <div style="font-size:11px; color:#8A97A6; font-family:'IBM Plex Mono',monospace; margin-top:3px;">{{ sel.cat }}</div>
+          <div style="margin-top:11px;">{{ sel.confBarBig }}</div>
+          <div style="margin-top:9px;">{{ sel.openBadge }}</div>
+          <div style="margin-top:12px; padding:10px 12px; border:1px solid #1E2832; border-radius:8px; background:#0E141B;">
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.12em; margin-bottom:4px;">INTENT</div>
+            <div style="font-size:13px; font-weight:600; color:{{ sel.verdictColor }};">{{ sel.intent }}</div>
+          </div>
+
+          <!-- mini attitude + fan -->
+          <div style="display:flex; gap:12px; margin-top:14px;">
+            <div style="flex:none;">
+              <div style="font-size:9px; color:#5C6773; letter-spacing:.12em; margin-bottom:6px;">ATTITUDE</div>
+              {{ attitudeDial }}
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:9px; color:#5C6773; letter-spacing:.12em; margin-bottom:6px;">SENSOR FAN</div>
+              {{ miniFan }}
+              <div style="font-size:9px; color:#6b7785; margin-top:6px; line-height:1.5;">{{ sel.fanSummary }}</div>
+            </div>
+          </div>
+
+          <!-- range / closing / ttc -->
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:14px;">
+            <div style="border:1px solid #1E2832; border-radius:8px; background:#0E141B; padding:9px 10px;">
+              <div style="font-size:8.5px; color:#5C6773; letter-spacing:.1em;">RANGE</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#C2D0DE; margin-top:2px;">{{ sel.rangeTxt }}</div>
+              <div style="font-size:8px; color:#5C6773; margin-top:1px;">camera · from CAD</div>
+            </div>
+            <div style="border:1px solid #1E2832; border-radius:8px; background:#0E141B; padding:9px 10px;">
+              <div style="font-size:8.5px; color:#5C6773; letter-spacing:.1em;">CLOSING</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:{{ sel.closingColor }}; margin-top:2px;">{{ sel.closingTxt }}</div>
+              <div style="font-size:8px; color:#5C6773; margin-top:1px;">m/s</div>
+            </div>
+            <div style="border:1px solid #1E2832; border-radius:8px; background:#0E141B; padding:9px 10px;">
+              <div style="font-size:8.5px; color:#5C6773; letter-spacing:.1em;">TTC</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#C2D0DE; margin-top:2px;">{{ sel.ttcTxt }}</div>
+              <div style="font-size:8px; color:#5C6773; margin-top:1px;">time-to-contact</div>
+            </div>
+          </div>
+
+          <!-- deep link -->
+          <button onClick="{{ goTrack }}" style="margin-top:13px; width:100%; height:34px; border:1px solid #1E2832; border-radius:8px; background:#0E141B; color:#8A97A6; font-family:'IBM Plex Sans',sans-serif; font-size:11px; letter-spacing:.06em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px;">
+            OPEN FULL THREAT CARD <span style="color:#2FD4E0;">→</span>
+          </button>
+        </div>
+
+        <!-- handoff -->
+        <div style="flex:none; padding:14px 16px; border-top:1px solid #1E2832; background:#0A0E13;">
+          <button onClick="{{ handoff }}" style="{{ handoffStyle }}">
+            <span style="display:flex; align-items:center; justify-content:center; gap:9px;">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8h9M8 4l4 4-4 4M11 2h3v12h-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {{ handoffLabel }}
+            </span>
+          </button>
+          <div style="font-size:9px; color:#5C6773; text-align:center; margin-top:7px; letter-spacing:.04em;">Packages this track as a recommendation to a <span style="color:#8A97A6;">human decision-maker</span>. No engagement.</div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- 02 · TRACK DETAIL -->
+    <sc-if value="{{ isTrack }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; display:flex; flex-direction:column; min-width:0; background:#0A0E13;">
+      <div style="height:48px; flex:none; display:flex; align-items:center; gap:12px; padding:0 18px; border-bottom:1px solid #1E2832;">
+        <div style="font-size:15px; font-weight:700;">Track Detail</div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:{{ det.color }};">{{ det.id }}</span>
+        <div style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em;">THE FULL VERDICT — WHY BELIEVE THIS CALL</div>
+        <div style="flex:1;"></div>
+        <button onClick="{{ backLive }}" style="height:30px; padding:0 13px; border:1px solid #1E2832; border-radius:7px; background:#0E141B; color:#8A97A6; font-size:11px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif;">← Live Ops</button>
+        <button onClick="{{ handoff }}" style="{{ det.handoffStyle }}">{{ det.handoffLabel }}</button>
+      </div>
+
+      <div style="flex:1; overflow-y:auto; padding:20px; display:flex; justify-content:center;">
+        <div style="width:100%; max-width:1080px; display:flex; flex-direction:column; gap:16px;">
+
+          <!-- anti-spoof banner -->
+          <sc-if value="{{ det.spoof }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:11px; padding:12px 16px; border:1px solid #5a2024; border-radius:10px; background:rgba(242,85,90,.12);">
+              <span style="font-size:18px;">⚠</span>
+              <div><div style="font-size:13px; color:#F2555A; font-weight:700; letter-spacing:.04em;">ANTI-SPOOF — SIZE CROSS-CHECK DIVERGES</div><div style="font-size:11px; color:#c98086; margin-top:2px;">ID implies a large airframe; radar-measured size disagrees. Confidence tempered. Flagged for a human.</div></div>
+            </div>
+          </sc-if>
+
+          <!-- BAND 1: VERDICT HEADER -->
+          <div style="border:1px solid #1E2832; border-radius:12px; background:linear-gradient(180deg,#0E141B,#0c1117); padding:20px 22px;">
+            <div style="display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+              <div style="flex:1; min-width:240px;">
+                <div style="font-size:9px; color:#5C6773; letter-spacing:.16em;">VERDICT</div>
+                <div style="display:flex; align-items:center; gap:10px; margin-top:5px;">
+                  <span style="width:14px; height:14px; transform:rotate(45deg); display:inline-block; background:{{ det.shapeFill }}; border:2px solid {{ det.color }};"></span>
+                  <span style="font-size:27px; font-weight:700; line-height:1; white-space:nowrap; color:{{ det.verdictColor }};">{{ det.name }}</span>
+                </div>
+                <div style="display:flex; gap:7px; margin-top:11px; flex-wrap:wrap;">{{ det.chips }}</div>
+                <div style="font-size:12.5px; color:#C2D0DE; margin-top:13px; font-family:'IBM Plex Mono',monospace;">{{ det.intentLine }}</div>
+              </div>
+              <div style="width:230px; flex:none;">
+                <div style="font-size:9px; color:#5C6773; letter-spacing:.12em;">TRACK-LEVEL CONFIDENCE</div>
+                <div style="margin-top:7px;">{{ det.confBig }}</div>
+                <div style="margin-top:11px;">{{ det.openBadge }}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BAND 2: EVIDENCE + ATTITUDE -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <!-- evidence -->
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:18px 20px;">
+              <div style="font-size:11px; font-weight:600; letter-spacing:.08em; color:#2FD4E0;">EVIDENCE — THE FAN</div>
+              <div style="font-size:10px; color:#6b7785; margin-top:3px;">Each feather is one cue. Agreement is the product.</div>
+              <div style="display:flex; justify-content:center; margin:14px 0 8px;">{{ det.bigFan }}</div>
+              <div style="height:1px; background:#1a242d; margin:8px 0 14px;"></div>
+              <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">CROSS-CHECK LEDGER</div>
+              <div style="display:flex; flex-direction:column; gap:8px;">{{ det.ledger }}</div>
+            </div>
+            <!-- attitude -->
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:18px 20px;">
+              <div style="font-size:11px; font-weight:600; letter-spacing:.08em; color:#2FD4E0;">ATTITUDE &amp; GEOMETRY</div>
+              <div style="font-size:10px; color:#6b7785; margin-top:3px;">6DoF from PnP against the identified airframe's CAD.</div>
+              <div style="display:flex; gap:16px; margin-top:14px; align-items:center;">
+                {{ det.attDial }}
+                <div style="flex:1; display:flex; flex-direction:column; gap:7px;">
+                  <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:12px;"><span style="color:#5C6773;">PITCH</span><span style="color:#C2D0DE;">{{ det.pitch }}</span></div>
+                  <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:12px;"><span style="color:#5C6773;">ROLL</span><span style="color:#C2D0DE;">{{ det.roll }}</span></div>
+                  <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:12px;"><span style="color:#5C6773;">YAW</span><span style="color:#C2D0DE;">{{ det.yaw }}</span></div>
+                  <div style="margin-top:3px;">{{ det.regimeChip }}</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:14px;">
+                <div style="border:1px solid #1a242d; border-radius:7px; padding:8px 9px;"><div style="font-size:8px; color:#5C6773; letter-spacing:.08em;">RANGE</div><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#C2D0DE;">{{ det.range }}</div><div style="font-size:7.5px; color:#5C6773;">cam · from CAD</div></div>
+                <div style="border:1px solid #1a242d; border-radius:7px; padding:8px 9px;"><div style="font-size:8px; color:#5C6773; letter-spacing:.08em;">CLOSING</div><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:{{ det.closingColor }};">{{ det.closing }}</div><div style="font-size:7.5px; color:#5C6773;">m/s</div></div>
+                <div style="border:1px solid #1a242d; border-radius:7px; padding:8px 9px;"><div style="font-size:8px; color:#5C6773; letter-spacing:.08em;">TTC</div><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#C2D0DE;">{{ det.ttc }}</div><div style="font-size:7.5px; color:#5C6773;">to contact</div></div>
+              </div>
+              <div style="display:flex; gap:14px; margin-top:14px;">
+                <div style="flex:none;"><div style="font-size:8.5px; color:#5C6773; letter-spacing:.1em; margin-bottom:6px;">POSE AXES</div>{{ det.poseThumb }}</div>
+                <div style="flex:1;"><div style="font-size:8.5px; color:#5C6773; letter-spacing:.1em; margin-bottom:6px;">KEYPOINTS · CONF GATE</div>{{ det.kpList }}</div>
+              </div>
+              <div style="margin-top:14px;">{{ det.pxMeter }}</div>
+            </div>
+          </div>
+
+          <!-- BAND 3: IDENTIFICATION DETAIL -->
+          <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:18px 20px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:.08em; color:#2FD4E0;">IDENTIFICATION DETAIL</div>
+            <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:22px; margin-top:14px;">
+              <div>
+                <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:10px;">TOP-K GALLERY MATCHES · COSINE SIMILARITY</div>
+                {{ det.candidates }}
+              </div>
+              <div>
+                <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:10px;">GALLERY REFERENCE RENDERS — WHAT IT MATCHED TO</div>
+                {{ det.refStrip }}
+              </div>
+            </div>
+          </div>
+
+          <!-- BAND 4: TRACK HISTORY -->
+          <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:18px 20px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:.08em; color:#2FD4E0;">TRACK HISTORY — PER-FRAME VOTES AGGREGATE INTO THE CALL</div>
+            <div style="margin-top:14px;">{{ det.voteStrip }}</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- 03 · SENSOR FUSION -->
+    <sc-if value="{{ isFusion }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; display:flex; flex-direction:column; min-width:0; background:#0A0E13;">
+      <div style="height:48px; flex:none; display:flex; align-items:center; gap:14px; padding:0 18px; border-bottom:1px solid #1E2832;">
+        <div style="font-size:15px; font-weight:700;">Sensor Fusion / Stack Health</div>
+        <div style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em;">THE PEACOCK TAIL — A FAN BEATS A FEATHER</div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; align-items:center; gap:8px;">{{ fus.coverage }}</div>
+      </div>
+
+      <div style="flex:1; display:flex; min-height:0;">
+        <!-- LEFT: ROSTER -->
+        <div style="width:266px; flex:none; border-right:1px solid #1E2832; background:#0C1218; display:flex; flex-direction:column; min-height:0;">
+          <div style="padding:14px 16px 10px; font-size:10px; color:#5C6773; letter-spacing:.12em; border-bottom:1px solid #16202a;">SENSOR ROSTER · ROLES</div>
+          <div style="flex:1; overflow-y:auto; padding:10px;">{{ fus.roster }}</div>
+          <div style="padding:12px 14px; border-top:1px solid #16202a;">
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.12em; margin-bottom:7px;">BAND</div>
+            <div style="display:flex; background:#0E141B; border:1px solid #1E2832; border-radius:8px; padding:3px; gap:3px;">
+              <button onClick="{{ fus.setEO }}" style="{{ fus.eoBtn }}">EO</button>
+              <button onClick="{{ fus.setIR }}" style="{{ fus.irBtn }}">IR</button>
+              <button onClick="{{ fus.setFused }}" style="{{ fus.fusedBtn }}">FUSED</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: THE FAN -->
+        <div style="flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:16px; left:50%; transform:translateX(-50%); text-align:center;">
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.16em;">COMPOUNDED VERDICT · HUB = SELECTED TRACK</div>
+          </div>
+          {{ fus.fan }}
+          <div style="margin-top:8px; max-width:460px; text-align:center; font-size:11px; color:#6b7785; line-height:1.6;">
+            Feather <span style="color:#C2D0DE;">length</span> = current contribution · <span style="color:#C2D0DE;">color</span> = agreement.
+            Solid feathers are fielded cues; dashed are <span style="color:#8A97A6;">planned integrations</span>. One feather is a guess — the fan is a decision.
+          </div>
+          <!-- fused preview -->
+          <sc-if value="{{ fus.showFused }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px; width:300px; border:1px solid #1E2832; border-radius:9px; background:#0C1218; padding:12px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:9px; color:#5C6773; letter-spacing:.1em;">EO + IR FUSED PREVIEW</span><span style="font-size:8px; color:#F2A93B; font-family:'IBM Plex Mono',monospace;">PLANNED</span></div>
+              <div style="position:relative; height:96px; border-radius:6px; overflow:hidden; margin-top:8px; background:linear-gradient(180deg,#0e1922,#0a1016);">
+                <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 46%, rgba(181,74,24,{{ fus.opVal }}) 0%, transparent 30%);"></div>
+                <div style="position:absolute; left:50%; top:46%; width:60px; height:13px; transform:translate(-50%,-50%); border:1px solid #2FD4E0; background:#0c1116; clip-path:polygon(0 45%,38% 38%,46% 0,54% 0,62% 38%,100% 45%,100% 55%,54% 60%,50% 100%,46% 100%,38% 60%,0 55%);"></div>
+              </div>
+              <div style="display:flex; align-items:center; gap:9px; margin-top:9px;"><span style="font-size:9px; color:#5C6773;">EO</span><input type="range" min="0" max="100" value="{{ fus.opacity }}" onInput="{{ fus.setOpacity }}" style="flex:1; accent-color:#2FD4E0;"/><span style="font-size:9px; color:#5C6773;">IR</span></div>
+              <div style="font-size:9px; color:#6b7785; margin-top:7px; line-height:1.5;">Detection enhancement + band-agreement check. Needs bore-sighted pairs; does <span style="color:#F2A93B;">not</span> restore IR-only-night identification.</div>
+            </div>
+          </sc-if>
+        </div>
+
+        <!-- RIGHT: CROSS-CHECK MATRIX -->
+        <div style="width:312px; flex:none; border-left:1px solid #1E2832; background:#0C1218; display:flex; flex-direction:column; min-height:0;">
+          <div style="padding:14px 16px 10px; font-size:10px; color:#5C6773; letter-spacing:.12em; border-bottom:1px solid #16202a;">CROSS-CHECK MATRIX · ANTI-SPOOF</div>
+          <div style="flex:1; overflow-y:auto; padding:16px;">
+            {{ fus.matrix }}
+            <div style="margin-top:18px; font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">FUSION EXPLAINER</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">{{ fus.explainer }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- 04 · AIRFRAME GALLERY -->
+    <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; display:flex; min-width:0; background:#0A0E13; position:relative;">
+      <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+        <div style="height:48px; flex:none; display:flex; align-items:center; gap:12px; padding:0 18px; border-bottom:1px solid #1E2832;">
+          <div style="font-size:15px; font-weight:700;">Airframe Library</div>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#2FD4E0;">6 airframes</span>
+          <span style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace;">· add a threat = add a CAD file</span>
+          <div style="flex:1;"></div>
+          <button onClick="{{ gal.openWizard }}" style="height:32px; padding:0 15px; border:1px solid #1d3a3d; border-radius:8px; background:linear-gradient(180deg,#2FD4E0,#1d9aa6); color:#06222a; font-size:11.5px; font-weight:700; letter-spacing:.04em; cursor:pointer; font-family:'IBM Plex Sans',sans-serif;">+ ADD AIRFRAME</button>
+        </div>
+        <!-- filter bar -->
+        <div style="height:38px; flex:none; display:flex; align-items:center; gap:8px; padding:0 18px; border-bottom:1px solid #16202a; background:#0C1218;">
+          <span style="font-size:9px; color:#5C6773; letter-spacing:.1em;">FILTER</span>
+          <span style="font-size:10px; color:#8A97A6; padding:3px 9px; border:1px solid #1E2832; border-radius:6px; background:#0E141B;">All groups</span>
+          <span style="font-size:10px; color:#8A97A6; padding:3px 9px; border:1px solid #1E2832; border-radius:6px; background:#0E141B;">All categories</span>
+          <span style="font-size:10px; color:#8A97A6; padding:3px 9px; border:1px solid #1E2832; border-radius:6px; background:#0E141B;">Band coverage</span>
+          <div style="flex:1;"></div>
+          <span style="font-size:9px; color:#5C6773;">SORT ▾ Group · then name</span>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:18px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(228px,1fr)); gap:16px;">
+            <sc-for list="{{ gal.cards }}" as="af" hint-placeholder-count="6">
+              <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; overflow:hidden; display:flex; flex-direction:column;">
+                <div style="position:relative; height:128px; border-bottom:1px solid #16202a;">
+                  {{ af.thumb }}
+                  <div style="position:absolute; top:9px; left:10px; display:flex; gap:6px;">{{ af.topChips }}</div>
+                  <div style="position:absolute; top:9px; right:10px;">{{ af.lock }}</div>
+                </div>
+                <div style="padding:13px 14px; display:flex; flex-direction:column; gap:9px;">
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                    <span style="font-size:14px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ af.name }}</span>
+                    {{ af.realBadge }}
+                  </div>
+                  <div style="display:flex; gap:6px; flex-wrap:wrap;">{{ af.chips }}</div>
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; padding-top:7px; border-top:1px solid #16202a;">
+                    <div><div style="font-size:8px; color:#5C6773; letter-spacing:.08em;">CAD SPAN</div><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#C2D0DE;">{{ af.span }}</div></div>
+                    <div style="text-align:right;"><div style="font-size:8px; color:#5C6773; letter-spacing:.08em;">REF EMBEDS</div><div style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#C2D0DE;">{{ af.refs }}</div></div>
+                    <div style="text-align:right;"><div style="font-size:8px; color:#5C6773; letter-spacing:.08em;">BANDS</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8fb4c9; margin-top:2px;">{{ af.bands }}</div></div>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: threshold + embedding -->
+      <div style="width:340px; flex:none; border-left:1px solid #1E2832; background:#0C1218; overflow-y:auto;">
+        <div style="padding:16px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:.06em; color:#2FD4E0;">OPEN-SET THRESHOLD</div>
+          <div style="font-size:10px; color:#6b7785; margin-top:3px; line-height:1.5;">How suspicious is the system? Below the cutoff → flagged <span style="color:#F2A93B;">UNKNOWN</span>.</div>
+          <div style="margin-top:14px;">{{ gal.tuner }}</div>
+          <div style="margin-top:18px; font-size:10px; color:#5C6773; letter-spacing:.1em;">SIMILARITY DISTRIBUTION</div>
+          <div style="margin-top:10px;">{{ gal.dist }}</div>
+          <div style="margin-top:20px; font-size:10px; color:#5C6773; letter-spacing:.1em;">EMBEDDING SPACE · 2-D PROJECTION</div>
+          <div style="font-size:9.5px; color:#6b7785; margin-top:3px; line-height:1.5;">Gallery clusters; the gap between them is the "unknown" region. The real X8 lands in its cluster — the sim-to-real win.</div>
+          <div style="margin-top:10px;">{{ gal.embed }}</div>
+        </div>
+      </div>
+
+      <!-- ADD-AIRFRAME WIZARD MODAL -->
+      <sc-if value="{{ gal.wizardOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; inset:0; background:rgba(5,8,11,.72); display:flex; align-items:center; justify-content:center; z-index:30;">
+          <div style="width:680px; max-width:92%; border:1px solid #25404e; border-radius:14px; background:#0E141B; box-shadow:0 24px 70px rgba(0,0,0,.6); overflow:hidden;">
+            <div style="display:flex; align-items:center; gap:10px; padding:16px 20px; border-bottom:1px solid #1E2832;">
+              <span style="font-size:14px; font-weight:700;">Add Airframe</span>
+              <span style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace;">render → embed → append · NO RETRAINING</span>
+              <div style="flex:1;"></div>
+              <button onClick="{{ gal.closeWizard }}" style="width:26px; height:26px; border:1px solid #1E2832; border-radius:6px; background:#0C1218; color:#8A97A6; cursor:pointer; font-size:13px;">✕</button>
+            </div>
+            <div style="padding:20px;">{{ gal.wizard }}</div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+    </sc-if>
+
+    <!-- 05 · SYNTHETIC DATA STUDIO -->
+    <sc-if value="{{ isStudio }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; display:flex; flex-direction:column; min-width:0; background:#0A0E13;">
+      <div style="height:48px; flex:none; display:flex; align-items:center; gap:12px; padding:0 18px; border-bottom:1px solid #1E2832;">
+        <div style="font-size:15px; font-weight:700; white-space:nowrap;">Synthetic Data Studio</div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#2FD4E0;">x8_clean_v3</span>
+        <span style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace;">· 200 frames · band EO</span>
+        <div style="flex:1;"></div>
+        <button style="height:30px; padding:0 13px; border:1px solid #1E2832; border-radius:7px; background:#0E141B; color:#8A97A6; font-size:11px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif;">Verify labels</button>
+        <button style="height:30px; padding:0 15px; border:1px solid #1d3a3d; border-radius:7px; background:linear-gradient(180deg,#2FD4E0,#1d9aa6); color:#06222a; font-size:11px; font-weight:700; cursor:pointer; font-family:'IBM Plex Sans',sans-serif;">Render ▸</button>
+      </div>
+
+      <div style="flex:1; display:flex; min-height:0;">
+        <!-- LEFT: GENERATION CONTROLS -->
+        <div style="width:282px; flex:none; border-right:1px solid #1E2832; background:#0C1218; overflow-y:auto;">
+          <div style="padding:16px;">
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.12em; margin-bottom:10px;">GENERATION CONTROLS</div>
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.06em;">AIRFRAME</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:5px; padding:8px 11px; border:1px solid #1E2832; border-radius:8px; background:#0E141B;"><span style="font-size:12px; color:#E6EDF3;">Skywalker X8</span><span style="color:#5C6773;">▾</span></div>
+
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.06em; margin-top:14px;">BAND · maps to --thermal</div>
+            <div style="display:flex; background:#0E141B; border:1px solid #1E2832; border-radius:8px; padding:3px; gap:3px; margin-top:5px;">
+              <button onClick="{{ st.setEO }}" style="{{ st.eoBtn }}">EO</button>
+              <button onClick="{{ st.setIR }}" style="{{ st.irBtn }}">IR · thermal</button>
+            </div>
+
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.06em; margin-top:14px;">MODE</div>
+            <div style="display:flex; background:#0E141B; border:1px solid #1E2832; border-radius:8px; padding:3px; gap:3px; margin-top:5px;">
+              <button onClick="{{ st.setClean }}" style="{{ st.cleanBtn }}">clean · ID</button>
+              <button onClick="{{ st.setDist }}" style="{{ st.distBtn }}">distractors</button>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;"><span style="font-size:9px; color:#5C6773; letter-spacing:.06em;">FRAME COUNT</span><span style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#C2D0DE;">200</span></div>
+
+            <div style="height:1px; background:#16202a; margin:16px 0;"></div>
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:10px;">DOMAIN RANDOMIZATION</div>
+            {{ st.drPanel }}
+
+            <div style="height:1px; background:#16202a; margin:16px 0;"></div>
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.06em;">MOTION SOURCE</div>
+            <div style="display:flex; flex-direction:column; gap:7px; margin-top:7px;">
+              <div style="display:flex; align-items:center; gap:8px; font-size:11px; color:#C2D0DE;"><span style="width:14px; height:14px; border-radius:50%; border:4px solid #2FD4E0; box-sizing:border-box;"></span>procedural coordinated-flight</div>
+              <div style="display:flex; align-items:center; gap:8px; font-size:11px; color:#6b7785;"><span style="width:14px; height:14px; border-radius:50%; border:1.5px solid #2a3340; box-sizing:border-box;"></span>flight-log replay <span style="font-size:8px; color:#F2A93B; font-family:'IBM Plex Mono',monospace;">ROADMAP</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: RENDER PREVIEW -->
+        <div style="flex:1; min-width:0; display:flex; flex-direction:column; padding:18px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+            <span style="font-size:11px; font-weight:600; letter-spacing:.06em; color:#2FD4E0; white-space:nowrap;">RENDER PREVIEW</span>
+            <div style="flex:1;"></div>
+            <span style="font-size:8.5px; color:#5C6773; letter-spacing:.08em;">LABEL OVERLAY</span>
+            <div style="display:flex; gap:5px; flex-wrap:wrap; justify-content:flex-end;">
+              <button onClick="{{ st.tBox }}" style="{{ st.boxBtn }}">box</button>
+              <button onClick="{{ st.tKp }}" style="{{ st.kpBtn }}">kp</button>
+              <button onClick="{{ st.tMask }}" style="{{ st.maskBtn }}">mask</button>
+              <button onClick="{{ st.tAxes }}" style="{{ st.axesBtn }}">axes</button>
+            </div>
+          </div>
+          <div style="font-size:9px; color:#6b7785; margin-bottom:10px;">Exported ground-truth drawn back on the frame — the labels-are-correct check.</div>
+          <div style="flex:1; display:flex; align-items:center; justify-content:center; min-height:0;">{{ st.preview }}</div>
+          <div style="margin-top:14px;">
+            <div style="font-size:9px; color:#5C6773; letter-spacing:.1em; margin-bottom:8px;">VARIETY — WHAT THE RANDOMIZATION PRODUCES</div>
+            {{ st.variety }}
+          </div>
+        </div>
+
+        <!-- RIGHT: DATASET PANEL -->
+        <div style="width:322px; flex:none; border-left:1px solid #1E2832; background:#0C1218; overflow-y:auto;">
+          <div style="padding:16px;">
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.12em;">DATASET</div>
+            <div style="display:flex; gap:18px; margin-top:10px;">
+              <div><div style="font-size:8.5px; color:#5C6773;">FRAMES</div><div style="font-family:'IBM Plex Mono',monospace; font-size:18px; color:#C2D0DE;">200</div></div>
+              <div style="flex:1;"><div style="font-size:8.5px; color:#5C6773;">TRAIN / VAL SPLIT</div>
+                <div style="display:flex; height:8px; border-radius:4px; overflow:hidden; margin-top:5px; background:#1a242d;"><div style="width:80%; background:#2FD4E0;"></div><div style="width:20%; background:#3a6b7a;"></div></div>
+                <div style="font-size:8px; color:#5C6773; margin-top:4px; font-family:'IBM Plex Mono',monospace;">160 / 40 · eval held-out (leakage-free)</div>
+              </div>
+            </div>
+
+            <div style="height:1px; background:#16202a; margin:16px 0;"></div>
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">LABEL INDEX · FAST QUERY</div>
+            {{ st.labelIndex }}
+
+            <div style="height:1px; background:#16202a; margin:16px 0;"></div>
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">FRAME INSPECTOR · frame 0142</div>
+            {{ st.inspector }}
+
+            <div style="height:1px; background:#16202a; margin:16px 0;"></div>
+            <div style="font-size:10px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">PROVENANCE</div>
+            <div style="display:flex; flex-direction:column; gap:7px; font-family:'IBM Plex Mono',monospace; font-size:10.5px;">
+              <div style="display:flex; justify-content:space-between;"><span style="color:#5C6773;">engine</span><span style="color:#C2D0DE;">datagen v3.2.1</span></div>
+              <div style="display:flex; justify-content:space-between;"><span style="color:#5C6773;">seed</span><span style="color:#C2D0DE;">0x8F3A21</span></div>
+              <div style="display:flex; justify-content:space-between;"><span style="color:#5C6773;">reproducible</span><span style="color:#4FD995;">✓ deterministic</span></div>
+              <div style="display:flex; justify-content:space-between; align-items:center;"><span style="color:#5C6773;">license / SBOM</span><span style="color:#4FD995; display:inline-flex; align-items:center; gap:5px;">🔒 ship-clean</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- 06 · MODEL EVAL / SIM-TO-REAL -->
+    <sc-if value="{{ isEval }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; display:flex; flex-direction:column; min-width:0; background:#0A0E13;">
+      <div style="height:48px; flex:none; display:flex; align-items:center; gap:12px; padding:0 18px; border-bottom:1px solid #1E2832;">
+        <div style="font-size:15px; font-weight:700; white-space:nowrap;">Model Eval / Sim-to-Real</div>
+        <span style="font-size:10px; color:#5C6773; font-family:'IBM Plex Mono',monospace;">build 2026.06.11 · last eval 14:02Z</span>
+        <div style="flex:1;"></div>
+        <span style="font-size:9px; color:#5C6773; letter-spacing:.1em;">CONTEXT</span>
+        <div style="display:flex; background:#0E141B; border:1px solid #1E2832; border-radius:8px; padding:3px; gap:3px;">
+          <button onClick="{{ ev.setSynthetic }}" style="{{ ev.synthBtn }}">SYNTHETIC</button>
+          <button onClick="{{ ev.setReal }}" style="{{ ev.realBtn }}">REAL</button>
+        </div>
+      </div>
+
+      <div style="flex:1; overflow-y:auto; padding:18px;">
+        <!-- scorecard -->
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">{{ ev.scorecard }}</div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+          <!-- LEFT: metric detail -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:16px 18px;">
+              <div style="font-size:11px; font-weight:600; letter-spacing:.07em; color:#2FD4E0;">METRIC DETAIL</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:14px;">
+                <div><div style="font-size:9px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">ID CONFUSION · airframe × airframe</div>{{ ev.confusion }}</div>
+                <div><div style="font-size:9px; color:#5C6773; letter-spacing:.1em; margin-bottom:9px;">VIEWPOINT ERROR · symmetry tells</div>{{ ev.viewpoint }}</div>
+              </div>
+            </div>
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:16px 18px;">
+              <div style="display:flex; align-items:center; gap:9px;"><div style="font-size:10px; font-weight:600; letter-spacing:.07em; color:#C2D0DE;">PIXELS-ON-TARGET → ACCURACY</div><span style="font-size:9px; color:#F2A93B; font-family:'IBM Plex Mono',monospace;">THE HONEST BOUND</span></div>
+              <div style="font-size:9.5px; color:#6b7785; margin-top:3px;">Full attitude up close; bearing + class at range. The envelope the operator UI must respect.</div>
+              <div style="margin-top:12px;">{{ ev.pixels }}</div>
+            </div>
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:16px 18px;">
+              <div style="font-size:10px; font-weight:600; letter-spacing:.07em; color:#C2D0DE;">KEYPOINT ERROR · 30-frame real fine-tune</div>
+              <div style="margin-top:12px;">{{ ev.kpTrend }}</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: real evidence -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="border:1px solid #25404e; border-radius:12px; background:linear-gradient(180deg,#0e1820,#0c1117); padding:16px 18px;">
+              <div style="display:flex; align-items:center; gap:9px; flex-wrap:wrap;"><div style="font-size:11px; font-weight:700; letter-spacing:.06em; color:#4FD995; white-space:nowrap;">REAL-FOOTAGE EVIDENCE</div><span style="font-size:9px; color:#4FD995; font-family:'IBM Plex Mono',monospace; white-space:nowrap;">● THE TRUST CORE</span></div>
+              <div style="font-size:9.5px; color:#6b7785; margin-top:3px;">A real, never-seen X8 — the thing that proves the thesis.</div>
+              <div style="margin-top:12px;">{{ ev.realVideo }}</div>
+              <div style="margin-top:14px;"><div style="font-size:9px; color:#5C6773; letter-spacing:.1em; margin-bottom:8px;">PER-FRAME VOTES → TRACK-LEVEL CALL</div>{{ ev.voteStrip }}</div>
+              <div style="margin-top:14px; display:flex; align-items:center; gap:11px; padding:11px 13px; border:1px solid #1f4a3a; border-radius:9px; background:rgba(79,217,149,.07);">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:22px; color:#4FD995; font-weight:600;">~1.0</span>
+                <div><div style="font-size:11px; color:#4FD995; font-weight:600;">EO similarity — gap-free</div><div style="font-size:9.5px; color:#8fa0af; margin-top:1px;">The EO embedding is domain-robust: synthetic → real with no measurable drop.</div></div>
+              </div>
+            </div>
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:16px 18px;">
+              <div style="display:flex; align-items:center; gap:9px;"><div style="font-size:10px; font-weight:600; letter-spacing:.07em; color:#C2D0DE;">THERMAL TEST · the honest IR finding</div><span style="font-size:9px; color:#F2A93B; font-family:'IBM Plex Mono',monospace;">PASSED INTEGRITY CHECK</span></div>
+              <div style="margin-top:12px;">{{ ev.thermal }}</div>
+            </div>
+            <div style="border:1px solid #1E2832; border-radius:12px; background:#0E141B; padding:16px 18px;">
+              <div style="font-size:10px; font-weight:600; letter-spacing:.07em; color:#C2D0DE;">BIRD REJECTION · Drone-vs-Bird false-alarm</div>
+              <div style="margin-top:12px;">{{ ev.bird }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    surface: 'live',
+    selectedId: 'id07',
+    view: 'map',
+    band: 'eo',
+    zulu: '00:00:00Z',
+    t: 0,
+    handoffSent: false,
+    thresh: 0.43,
+    opacity: 55,
+    wizardStep: 0,
+    evalMode: 'real',
+    studioBand: 'eo',
+    studioMode: 'clean',
+    overlay: { box:true, kp:true, mask:false, axes:true },
+    tracks: [
+      { id:'id07', name:'Skywalker X8', cat:'delta fixed-wing · G2', posture:'hostile', conf:92, frameConf:85, state:'confirmed', intent:'TURNING TOWARD ASSET', intentShort:'TURNING IN', closing:14, ttc:38, bearing:28, range:1850, dB:-0.05, dR:-0.9, head:208, pitch:4, roll:-11, yaw:207, regime:'CRUISE', span:1.5, px:63, openset:'in-library', sim:0.98, spoof:false, fan:{eo:'agree',ir:'agree',motion:'agree',radar:'weak',rf:'absent'} },
+      { id:'id03', name:'UNKNOWN', cat:'open-set · novel airframe', posture:'unknown', conf:41, frameConf:38, state:'confirmed', intent:'HOLDING', intentShort:'HOLDING', closing:0, ttc:null, bearing:312, range:2380, dB:0.025, dR:0.05, head:132, pitch:null, roll:null, yaw:null, regime:null, span:null, px:31, openset:'novel', sim:0.41, spoof:false, fan:{eo:'weak',ir:'agree',motion:'weak',radar:'absent',rf:'absent'} },
+      { id:'id11', name:'x500 quad', cat:'multirotor · G1', posture:'friendly', conf:88, frameConf:84, state:'confirmed', intent:'HOVER', intentShort:'HOVER', closing:0, ttc:null, bearing:96, range:900, dB:0.01, dR:0.0, head:96, pitch:2, roll:3, yaw:88, regime:'HOVER', span:0.5, px:120, openset:'in-library', sim:0.91, spoof:false, fan:{eo:'agree',ir:'agree',motion:'agree',radar:'absent',rf:'agree'} },
+      { id:'id14', name:'RQ-7 Shadow', cat:'fixed-wing · G3', posture:'hostile', conf:79, frameConf:71, state:'tentative', intent:'CLOSING', intentShort:'CLOSING', closing:9, ttc:118, bearing:201, range:2720, dB:0.03, dR:-0.6, head:21, pitch:1, roll:-4, yaw:24, regime:'CRUISE', span:4.3, px:44, openset:'in-library', sim:0.83, spoof:false, fan:{eo:'agree',ir:'weak',motion:'agree',radar:'weak',rf:'absent'} },
+      { id:'bird', name:'Bird', cat:'clutter · rejected by detector', posture:'clutter', conf:0, state:'rejected', intent:'—', closing:0, ttc:null, bearing:150, range:1300, dB:0.5, dR:0.25, rejected:true, fan:null },
+      { id:'ghost', name:'Radar cue', cat:'radar-cued · no EO yet', posture:'unknown', state:'ghost', bearing:340, range:2850, dB:-0.04, dR:-0.2, ghost:true, planned:true, fan:null }
+    ]
+  };
+
+  componentDidMount(){
+    this._iv = setInterval(()=>this.tick(), 110);
+    this.tick();
+  }
+  componentWillUnmount(){ clearInterval(this._iv); }
+
+  tick(){
+    const now = new Date();
+    const z = (n)=> String(n).padStart(2,'0');
+    const zulu = z(now.getUTCHours())+':'+z(now.getUTCMinutes())+':'+z(now.getUTCSeconds())+'Z';
+    this.setState(s=>{
+      const tracks = s.tracks.map(tr=>{
+        let bearing = ((tr.bearing + (tr.dB||0)) % 360 + 360) % 360;
+        let range = tr.range + (tr.dR||0);
+        let dR = tr.dR||0, dB = tr.dB||0;
+        if(range < 650 && dR < 0){ range = 2400; }       // loop closers
+        if(range > 2950 && dR > 0){ dR = -Math.abs(dR); }
+        if(tr.id==='bird'){ dB = 0.5 + Math.sin(s.t/9)*0.5; }
+        return {...tr, bearing, range, dR, dB};
+      });
+      return { t:s.t+1, tracks, zulu };
+    });
+  }
+
+  // ---- helpers ----
+  pc(p){ return ({hostile:'#F2555A', unknown:'#F2A93B', friendly:'#4FD995', clutter:'#5A636E', ghost:'#6E7B88'})[p] || '#8A97A6'; }
+  fanColor(s){ return ({agree:'#4FD995', weak:'#F2A93B', diverge:'#F2555A', absent:'#39434e'})[s] || '#39434e'; }
+
+  navIcon(id, active){
+    const c = active ? '#2FD4E0' : '#6b7785';
+    const E = React.createElement;
+    const svg = (kids)=> E('svg',{width:20,height:20,viewBox:'0 0 20 20',fill:'none'},kids);
+    if(id==='live') return svg([E('circle',{key:1,cx:10,cy:10,r:7.5,stroke:c,strokeWidth:1.2}),E('circle',{key:2,cx:10,cy:10,r:3.5,stroke:c,strokeWidth:1.2}),E('circle',{key:3,cx:10,cy:10,r:1.4,fill:c})]);
+    if(id==='track') return svg([E('rect',{key:1,x:3,y:3,width:14,height:14,rx:2,stroke:c,strokeWidth:1.2}),E('path',{key:2,d:'M10 1.5v3M10 15.5v3M1.5 10h3M15.5 10h3',stroke:c,strokeWidth:1.2}),E('circle',{key:3,cx:10,cy:10,r:2,fill:c})]);
+    if(id==='fusion') return svg([E('path',{key:1,d:'M10 17L4 5M10 17l6-12M10 17V4M10 17l-7-6M10 17l7-6',stroke:c,strokeWidth:1.1,strokeLinecap:'round'}),E('circle',{key:2,cx:10,cy:17,r:2,fill:c})]);
+    if(id==='gallery') return svg([E('rect',{key:1,x:2.5,y:2.5,width:6.5,height:6.5,rx:1,stroke:c,strokeWidth:1.2}),E('rect',{key:2,x:11,y:2.5,width:6.5,height:6.5,rx:1,stroke:c,strokeWidth:1.2}),E('rect',{key:3,x:2.5,y:11,width:6.5,height:6.5,rx:1,stroke:c,strokeWidth:1.2}),E('rect',{key:4,x:11,y:11,width:6.5,height:6.5,rx:1,stroke:c,strokeWidth:1.2})]);
+    if(id==='studio') return svg([E('path',{key:1,d:'M10 2.5l7 4v7l-7 4-7-4v-7l7-4z',stroke:c,strokeWidth:1.2,strokeLinejoin:'round'}),E('path',{key:2,d:'M3 6.5l7 4 7-4M10 10.5v7',stroke:c,strokeWidth:1.1})]);
+    if(id==='eval') return svg([E('path',{key:1,d:'M3 17V3M3 17h14',stroke:c,strokeWidth:1.2,strokeLinecap:'round'}),E('rect',{key:2,x:6,y:11,width:2.5,height:4,fill:c}),E('rect',{key:3,x:10,y:7,width:2.5,height:8,fill:c}),E('rect',{key:4,x:14,y:9,width:2.5,height:6,fill:c})]);
+    return null;
+  }
+
+  // intent chip
+  intentChip(tr, short){
+    const E=React.createElement;
+    const col = this.pc(tr.posture);
+    const txt = short ? (tr.intentShort||tr.intent) : tr.intent;
+    if(tr.rejected) return E('span',{style:{fontSize:'10px',color:'#5C6773'}},'—');
+    return E('span',{style:{display:'inline-block',padding:'3px 8px',borderRadius:'5px',fontSize:'9.5px',fontWeight:600,letterSpacing:'.04em',color:col,background:'rgba(0,0,0,.25)',border:'1px solid '+col+'55',fontFamily:"'IBM Plex Sans',sans-serif",whiteSpace:'nowrap'}}, txt);
+  }
+  confBar(tr,big){
+    const E=React.createElement;
+    if(tr.rejected) return E('span',{style:{fontSize:'10px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}},'rejected');
+    const v=tr.conf; const col = v>=80? '#4FD995' : v>=55? '#F2A93B' : '#F2555A';
+    const h = big? 7 : 5;
+    return E('div',{style:{display:'flex',flexDirection:'column',gap:'3px'}},[
+      E('div',{key:1,style:{display:'flex',alignItems:'baseline',gap:'5px'}},[
+        E('span',{key:'a',style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:big?'20px':'13px',fontWeight:600,color:col}}, v+'%'),
+        big? E('span',{key:'b',style:{fontSize:'9px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}}, 'track · '+tr.frameConf+'%/frame') : null
+      ]),
+      E('div',{key:2,style:{height:h+'px',background:'#1a242d',borderRadius:'3px',overflow:'hidden',width:big?'100%':'56px'}},
+        E('div',{style:{height:'100%',width:v+'%',background:col,borderRadius:'3px'}}))
+    ]);
+  }
+  stateChip(tr){
+    const E=React.createElement;
+    const map={confirmed:['#4FD995','CONFIRMED','solid'],tentative:['#F2A93B','TENTATIVE','dash'],coasting:['#8A97A6','COASTING','hollow'],rejected:['#5A636E','REJECTED','x']};
+    const m=map[tr.state]||map.confirmed;
+    const dot = m[2]==='solid'? {background:m[0]} : m[2]==='dash'? {border:'1.5px dashed '+m[0]} : m[2]==='x'? {} : {border:'1.5px solid '+m[0]};
+    return E('span',{style:{display:'inline-flex',alignItems:'center',gap:'6px',fontSize:'9px',color:m[0],letterSpacing:'.06em',fontFamily:"'IBM Plex Mono',monospace"}},[
+      E('span',{key:1,style:Object.assign({width:'8px',height:'8px',borderRadius:'2px',display:'inline-block'},dot)}, m[2]==='x'?'':''),
+      m[1]
+    ]);
+  }
+  fanGlyph(tr){
+    const E=React.createElement;
+    if(!tr.fan) return E('span',{style:{fontSize:'10px',color:'#5C6773'}},'—');
+    const order=['eo','ir','motion','radar','rf'];
+    const angs=[-52,-26,0,26,52];
+    return E('svg',{width:48,height:30,viewBox:'0 0 48 30'},
+      order.map((k,i)=>{
+        const col=this.fanColor(tr.fan[k]);
+        const a=(angs[i]-90)*Math.PI/180;
+        const len = tr.fan[k]==='absent'? 13 : tr.fan[k]==='weak'? 16 : 21;
+        const x=24+len*Math.cos(a), y=27+len*Math.sin(a);
+        const dash = tr.fan[k]==='absent';
+        return E('line',{key:k,x1:24,y1:27,x2:x,y2:y,stroke:col,strokeWidth:dash?1.3:2.4,strokeLinecap:'round',strokeDasharray:dash?'2 2':null});
+      }).concat([E('circle',{key:'h',cx:24,cy:27,r:2.4,fill:this.pc(tr.posture)})])
+    );
+  }
+
+  // mini attitude dial (artificial horizon)
+  attitudeDial(tr,size){
+    const E=React.createElement;
+    const D=size||96;
+    if(!tr || tr.roll==null) return E('div',{style:{width:D+'px',height:D+'px',borderRadius:'50%',border:'1px solid #1E2832',display:'flex',alignItems:'center',justifyContent:'center',background:'#0a0e13',flex:'none'}},
+      E('span',{style:{fontSize:'9px',color:'#5C6773',textAlign:'center',lineHeight:1.4,fontFamily:"'IBM Plex Mono',monospace",padding:'0 8px'}},'BEARING ONLY'));
+    const roll=tr.roll, pitch=tr.pitch;
+    const sky='#1d4250', gnd='#3a2a12';
+    return E('div',{style:{position:'relative',width:D+'px',height:D+'px',flex:'none',borderRadius:'50%',overflow:'hidden',border:'1.5px solid #2a3a44',boxShadow:'inset 0 0 14px rgba(0,0,0,.6)'}},[
+      E('div',{key:'h',style:{position:'absolute',left:'-30%',top:'-30%',width:'160%',height:'160%',transform:'rotate('+(-roll)+'deg) translateY('+(pitch*1.4)+'px)',background:'linear-gradient(180deg,'+sky+' 0%,'+sky+' 50%,'+gnd+' 50%,'+gnd+' 100%)'}},
+        E('div',{style:{position:'absolute',top:'50%',left:0,right:0,height:'1.5px',background:'#C2D0DE'}})),
+      E('div',{key:'c',style:{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-50%)',width:'30px',height:'2px',background:'#2FD4E0'}}),
+      E('div',{key:'d',style:{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-50%)',width:'4px',height:'4px',borderRadius:'50%',background:'#2FD4E0'}}),
+      E('div',{key:'t',style:{position:'absolute',bottom:'6px',left:0,right:0,textAlign:'center',fontFamily:"'IBM Plex Mono',monospace",fontSize:'8px',color:'#C2D0DE'}}, 'P'+(pitch>=0?'+':'')+pitch+'° R'+(roll>=0?'+':'')+roll+'°')
+    ]);
+  }
+
+  // mini fan (right panel) — larger version
+  miniFan(tr){
+    const E=React.createElement;
+    if(!tr.fan) return E('div',{style:{height:'70px',display:'flex',alignItems:'center',color:'#5C6773',fontSize:'10px'}},'no fusion data');
+    const items=[['EO','eo'],['IR','ir'],['MOT','motion'],['RAD','radar'],['RF','rf']];
+    const angs=[-60,-30,0,30,60];
+    const kids=[];
+    items.forEach((it,i)=>{
+      const st=tr.fan[it[1]]; const col=this.fanColor(st);
+      const a=(angs[i]-90)*Math.PI/180;
+      const len= st==='absent'?22: st==='weak'?30:40;
+      const x=72+len*Math.cos(a), y=66+len*Math.sin(a);
+      const dash= st==='absent';
+      kids.push(E('line',{key:'l'+i,x1:72,y1:66,x2:x,y2:y,stroke:col,strokeWidth:dash?1.6:3.4,strokeLinecap:'round',strokeDasharray:dash?'3 3':null}));
+      const lx=72+(len+9)*Math.cos(a), ly=66+(len+9)*Math.sin(a);
+      kids.push(E('text',{key:'t'+i,x:lx,y:ly+3,fill:col,fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"}, it[0]));
+    });
+    kids.push(E('circle',{key:'hub',cx:72,cy:66,r:4,fill:this.pc(tr.posture)}));
+    return E('svg',{width:144,height:78,viewBox:'0 0 144 78',style:{display:'block'}}, kids);
+  }
+
+  openBadge(tr){
+    const E=React.createElement;
+    const novel = tr.openset==='novel';
+    const col = novel? '#F2A93B':'#4FD995';
+    return E('div',{style:{display:'inline-flex',alignItems:'center',gap:'7px',padding:'4px 10px',borderRadius:'6px',border:'1px solid '+col+'55',background:col+'15'}},[
+      E('span',{key:1,style:{width:'7px',height:'7px',borderRadius:'50%',background:col}}),
+      E('span',{key:2,style:{fontSize:'10px',color:col,fontWeight:600,letterSpacing:'.04em'}}, novel?'NOVEL · NOT IN LIBRARY':'IN-LIBRARY'),
+      E('span',{key:3,style:{fontSize:'9px',color:'#8A97A6',fontFamily:"'IBM Plex Mono',monospace"}}, 'cos '+(tr.sim!=null?tr.sim.toFixed(2):'—'))
+    ]);
+  }
+
+  chip(txt,col){ return React.createElement('span',{key:txt,style:{display:'inline-flex',alignItems:'center',gap:'5px',padding:'4px 9px',borderRadius:'6px',fontSize:'10px',fontWeight:600,letterSpacing:'.04em',color:col,border:'1px solid '+col+'44',background:col+'12',fontFamily:"'IBM Plex Sans',sans-serif"}}, txt); }
+
+  detChips(tr){
+    const E=React.createElement; const out=[];
+    const meta={ id07:['DELTA','G2',true], id03:['UNKNOWN','G?',false], id11:['MULTIROTOR','G1',false], id14:['FIXED-WING','G3',false] }[tr.id] || ['—','—',false];
+    out.push(this.chip(meta[0], tr.posture==='unknown'?'#F2A93B':'#8fb4c9'));
+    out.push(this.chip('UAS '+meta[1], '#8A97A6'));
+    out.push(E('span',{key:'band',style:{display:'inline-flex',alignItems:'center',gap:'6px',padding:'4px 9px',borderRadius:'6px',fontSize:'10px',color:'#8A97A6',border:'1px solid #1E2832',background:'#0c1117',fontFamily:"'IBM Plex Mono',monospace"}}, 'EO✓ IR✓'));
+    if(meta[2]) out.push(E('span',{key:'real',style:{display:'inline-flex',alignItems:'center',gap:'6px',padding:'4px 9px',borderRadius:'6px',fontSize:'10px',fontWeight:600,color:'#4FD995',border:'1px solid #1f4a3a',background:'rgba(79,217,149,.1)'}}, ['● ','VALIDATED ON REAL VIDEO']));
+    return out;
+  }
+
+  bigFan(tr){
+    const E=React.createElement;
+    const fan = tr.fan || {eo:'absent',ir:'absent',motion:'absent',radar:'absent',rf:'absent'};
+    const items=[['EO · ID','eo'],['IR · DETECT','ir'],['MOTION','motion'],['RADAR','radar'],['RF','rf']];
+    const angs=[-72,-38,0,38,72];
+    const cx=140, cy=128;
+    const kids=[];
+    // faint backing arcs
+    kids.push(E('path',{key:'bg',d:'M40 128 A100 100 0 0 1 240 128',fill:'none',stroke:'#16202a',strokeWidth:1}));
+    items.forEach((it,i)=>{
+      const st = fan[it[1]] || 'absent';
+      const col=this.fanColor(st);
+      const a=(angs[i]-90)*Math.PI/180;
+      const len = st==='absent'?52: st==='weak'?74:96;
+      const x=cx+len*Math.cos(a), y=cy+len*Math.sin(a);
+      const dash = st==='absent';
+      // feather: a tapered line with a leaf tip
+      kids.push(E('line',{key:'l'+i,x1:cx,y1:cy,x2:x,y2:y,stroke:col,strokeWidth:dash?2:7,strokeLinecap:'round',strokeDasharray:dash?'4 5':null,opacity:dash?0.55:0.92}));
+      if(!dash) kids.push(E('circle',{key:'t'+i,cx:x,cy:y,r:5,fill:col}));
+      const lx=cx+(len+20)*Math.cos(a), ly=cy+(len+20)*Math.sin(a);
+      kids.push(E('text',{key:'lab'+i,x:lx,y:ly+3,fill:dash?'#5C6773':col,fontSize:'9.5',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace",fontWeight:500}, it[0]));
+      if(dash) kids.push(E('text',{key:'pl'+i,x:lx,y:ly+15,fill:'#475260',fontSize:'7.5',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"}, 'PLANNED'));
+    });
+    // hub
+    kids.push(E('circle',{key:'hub',cx:cx,cy:cy,r:11,fill:'#0a0e13',stroke:this.pc(tr.posture),strokeWidth:2}));
+    kids.push(E('circle',{key:'hub2',cx:cx,cy:cy,r:4,fill:this.pc(tr.posture)}));
+    // center verdict conf
+    kids.push(E('text',{key:'cf',x:cx,y:cy+30,fill:this.pc(tr.posture),fontSize:'15',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace",fontWeight:600}, (tr.conf||0)+'%'));
+    kids.push(E('text',{key:'cfl',x:cx,y:cy+43,fill:'#5C6773',fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"}, 'COMPOUNDED'));
+    return E('svg',{width:280,height:175,viewBox:'0 0 280 175',style:{display:'block'}}, kids);
+  }
+
+  ledger(tr){
+    const E=React.createElement;
+    const rows = tr.id==='id07'
+      ? [['EO ID ↔ CAD size','agree','1.50 m span — consistent'],['CAD size ↔ radar','na','radar not cued (planned)'],['EO ↔ IR band','agree','both see target @ bearing 207°']]
+      : tr.id==='id03'
+      ? [['EO ID ↔ CAD size','na','no confident ID — open-set'],['CAD size ↔ radar','na','radar not cued (planned)'],['EO ↔ IR band','agree','both see a target — detection only']]
+      : [['EO ID ↔ CAD size','agree','size consistent with ID'],['CAD size ↔ radar','na','radar not cued (planned)'],['EO ↔ IR band','weak','IR marginal at range']];
+    const map={agree:['#4FD995','AGREE'],diverge:['#F2555A','DIVERGE'],weak:['#F2A93B','WEAK'],na:['#5C6773','N / A']};
+    return rows.map((r,i)=>{
+      const m=map[r[1]];
+      return E('div',{key:i,style:{display:'flex',alignItems:'center',gap:'10px',padding:'8px 10px',border:'1px solid #1a242d',borderRadius:'7px',background:'#0c1117'}},[
+        E('span',{key:'p',style:{flex:'none',width:'62px',textAlign:'center',padding:'3px 0',borderRadius:'5px',fontSize:'9px',fontWeight:700,letterSpacing:'.04em',color:m[0],background:m[0]+'18',border:'1px solid '+m[0]+'44',fontFamily:"'IBM Plex Mono',monospace"}}, m[1]),
+        E('div',{key:'t',style:{flex:1}},[
+          E('div',{key:1,style:{fontSize:'11.5px',color:'#C2D0DE',fontWeight:500}}, r[0]),
+          E('div',{key:2,style:{fontSize:'9.5px',color:'#6b7785',marginTop:'1px'}}, r[2])
+        ])
+      ]);
+    });
+  }
+
+  regimeChip(tr){
+    const E=React.createElement;
+    if(!tr.regime) return E('span',{style:{fontSize:'9px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}},'regime: —');
+    return E('span',{style:{display:'inline-flex',alignItems:'center',gap:'6px',padding:'3px 9px',borderRadius:'6px',fontSize:'9.5px',fontWeight:600,color:'#8fb4c9',border:'1px solid #25404e',background:'rgba(47,212,224,.06)',fontFamily:"'IBM Plex Mono',monospace"}}, ['REGIME · '+tr.regime, E('span',{key:'p',style:{fontSize:'7px',color:'#5C6773'}},'PLAN')]);
+  }
+
+  poseThumb(tr){
+    const E=React.createElement;
+    return E('div',{style:{width:'94px',height:'74px',borderRadius:'7px',border:'1px solid #1a242d',background:'repeating-linear-gradient(45deg,#0d141b,#0d141b 5px,#0f1822 5px,#0f1822 10px)',position:'relative',overflow:'hidden'}},[
+      E('svg',{key:'a',width:94,height:74,viewBox:'0 0 94 74',style:{position:'absolute',inset:0}},[
+        E('line',{key:'z',x1:47,y1:40,x2:47,y2:14,stroke:'#4FD995',strokeWidth:2.2}),
+        E('line',{key:'x',x1:47,y1:40,x2:74,y2:48,stroke:'#F2555A',strokeWidth:2.2}),
+        E('line',{key:'y',x1:47,y1:40,x2:24,y2:52,stroke:'#2FD4E0',strokeWidth:2.2}),
+        E('circle',{key:'o',cx:47,cy:40,r:2.5,fill:'#fff'})
+      ])
+    ]);
+  }
+
+  kpList(tr){
+    const E=React.createElement;
+    const kps = tr.id==='id03'
+      ? [['nose',0.61,true],['body',0.55,true],['edge-1',0.34,false],['edge-2',0.29,false]]
+      : [['nose',0.94,true],['L wingtip',0.88,true],['R wingtip',0.91,true],['tail',0.38,false],['centroid',0.86,true]];
+    return E('div',{style:{display:'flex',flexDirection:'column',gap:'5px'}}, kps.map((k,i)=>{
+      const col = k[2]? '#FFD84D' : '#5C6773';
+      return E('div',{key:i,style:{display:'flex',alignItems:'center',gap:'8px',opacity:k[2]?1:0.5}},[
+        E('span',{key:'d',style:{width:'7px',height:'7px',borderRadius:'50%',border:'1.4px solid '+col,flex:'none'}}),
+        E('span',{key:'n',style:{fontSize:'10px',color:'#C2D0DE',width:'62px',fontFamily:"'IBM Plex Mono',monospace"}}, k[0]),
+        E('div',{key:'b',style:{flex:1,height:'4px',background:'#1a242d',borderRadius:'2px',overflow:'hidden'}}, E('div',{style:{height:'100%',width:(k[1]*100)+'%',background:col}})),
+        E('span',{key:'v',style:{fontSize:'9.5px',color:k[2]?'#C2D0DE':'#5C6773',fontFamily:"'IBM Plex Mono',monospace",width:'30px',textAlign:'right'}}, k[1].toFixed(2)),
+        k[2]? null : E('span',{key:'x',style:{fontSize:'7.5px',color:'#5C6773',letterSpacing:'.06em'}},'DROP')
+      ]);
+    }));
+  }
+
+  pxMeter(tr){
+    const E=React.createElement;
+    const px = tr.px||0;
+    const pos = Math.max(2,Math.min(98, px/120*100));
+    const state = px>=55? ['#4FD995','FULL ATTITUDE'] : px>=25? ['#F2A93B','ATTITUDE — MARGINAL'] : ['#F2555A','BEARING + CLASS ONLY'];
+    return E('div',{},[
+      E('div',{key:'h',style:{display:'flex',justifyContent:'space-between',alignItems:'baseline',marginBottom:'6px'}},[
+        E('span',{key:1,style:{fontSize:'8.5px',color:'#5C6773',letterSpacing:'.1em'}},'PIXELS ON TARGET'),
+        E('span',{key:2,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'12px',color:state[0]}}, px+' px · '+state[1])
+      ]),
+      E('div',{key:'bar',style:{position:'relative',height:'9px',borderRadius:'5px',overflow:'hidden',background:'linear-gradient(90deg,#5a2024 0%,#5a2024 21%,#5a4418 21%,#5a4418 46%,#1f4a3a 46%,#1f4a3a 100%)'}},
+        E('div',{style:{position:'absolute',top:'-2px',left:pos+'%',width:'2px',height:'13px',background:'#fff',boxShadow:'0 0 5px #fff'}})),
+      E('div',{key:'lab',style:{display:'flex',justifyContent:'space-between',marginTop:'4px',fontSize:'7.5px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}},[E('span',{key:1},'bearing'),E('span',{key:2},'marginal'),E('span',{key:3},'full 6DoF')])
+    ]);
+  }
+
+  candidates(tr){
+    const E=React.createElement;
+    const data={
+      id07:[['Skywalker X8',0.98],['Mini Talon',0.42],['x500 quad',0.18],['RQ-7 Shadow',0.12]],
+      id03:[['Mini Talon',0.39],['x500 quad',0.31],['Alti Transition',0.24],['Skywalker X8',0.16]],
+      id11:[['x500 quad',0.91],['Mini Talon',0.27],['Alti Transition',0.19],['Skywalker X8',0.08]],
+      id14:[['RQ-7 Shadow',0.83],['Alti Transition',0.36],['Skywalker X8',0.21],['Mini Talon',0.14]]
+    }[tr.id] || [['—',0]];
+    const thr=0.43;
+    return E('div',{style:{display:'flex',flexDirection:'column',gap:'9px',position:'relative'}}, [
+      E('div',{key:'thr',style:{position:'absolute',left:'calc(150px + '+(thr*100)+'% * (100% - 150px) / 100)',top:0,bottom:'0',width:'0'}}),
+    ].concat(data.map((c,i)=>{
+      const inlib = c[1]>=thr;
+      const col = i===0&&inlib? '#4FD995' : inlib? '#8fb4c9' : '#5C6773';
+      const barCol = i===0&&inlib? '#4FD995' : (tr.posture==='unknown'? '#F2A93B':'#3a6b7a');
+      return E('div',{key:i,style:{display:'flex',alignItems:'center',gap:'10px'}},[
+        E('span',{key:'n',style:{width:'108px',fontSize:'11px',color:col,fontWeight:i===0?600:400,fontFamily:"'IBM Plex Sans',sans-serif"}}, c[0]),
+        E('div',{key:'b',style:{flex:1,position:'relative',height:'14px',background:'#13202a',borderRadius:'3px',overflow:'visible'}},[
+          E('div',{key:'f',style:{height:'100%',width:(c[1]*100)+'%',background:barCol,borderRadius:'3px',opacity:inlib?1:0.6}}),
+          i===0? E('div',{key:'thr',style:{position:'absolute',top:'-4px',bottom:'-4px',left:(thr*100)+'%',width:'2px',background:'#F2A93B'}}) : null
+        ]),
+        E('span',{key:'v',style:{width:'34px',textAlign:'right',fontFamily:"'IBM Plex Mono',monospace",fontSize:'11px',color:col}}, c[1].toFixed(2))
+      ]);
+    })).concat([
+      E('div',{key:'thrlab',style:{marginTop:'4px',fontSize:'9px',color:'#F2A93B',fontFamily:"'IBM Plex Mono',monospace"}}, '▲ open-set threshold 0.43 — below this → flagged UNKNOWN')
+    ]));
+  }
+
+  refStrip(tr){
+    const E=React.createElement;
+    const labels=['front','3/4','side','top'];
+    return E('div',{},[
+      E('div',{key:'g',style:{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 1fr',gap:'7px'}}, labels.map((l,i)=>
+        E('div',{key:i,style:{aspectRatio:'1',borderRadius:'6px',border:'1px solid #1a242d',background:'repeating-linear-gradient(45deg,#0d141b,#0d141b 4px,#101a23 4px,#101a23 8px)',position:'relative',overflow:'hidden',display:'flex',alignItems:'flex-end',justifyContent:'center'}},[
+          E('div',{key:'s',style:{position:'absolute',left:'50%',top:'44%',transform:'translate(-50%,-50%)',width:'62%',height:'10px',background:'#2a3742',clipPath:'polygon(0 45%,38% 38%,46% 0,54% 0,62% 38%,100% 45%,100% 55%,54% 60%,50% 100%,46% 100%,38% 60%,0 55%)'}}),
+          E('span',{key:'l',style:{position:'relative',marginBottom:'4px',fontSize:'7.5px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}}, l)
+        ])
+      )),
+      E('div',{key:'n',style:{marginTop:'8px',fontSize:'9.5px',color:'#6b7785',fontFamily:"'IBM Plex Mono',monospace"}}, (tr.id==='id03'?'— no matched airframe (novel)':'24 reference embeddings · synthetic renders'))
+    ]);
+  }
+
+  voteStrip(tr){
+    const E=React.createElement;
+    // build a vote sequence
+    const N=44;
+    const seq=[];
+    for(let i=0;i<N;i++){
+      if(tr.id==='id03'){ seq.push(i%3===0?'a':(i%5===0?'b':'u')); }
+      else if(tr.id==='id14'){ seq.push(i<6?'u':(i%9===0?'b':'a')); }
+      else { seq.push(i<3?'u':(i===7||i===14?'b':'a')); }
+    }
+    const colMap={a:tr.posture==='unknown'?'#F2A93B':'#4FD995', b:'#3a6b7a', u:'#2a3742'};
+    return E('div',{},[
+      E('div',{key:'s',style:{display:'flex',gap:'2px',alignItems:'flex-end',height:'34px'}}, seq.map((v,i)=>
+        E('div',{key:i,title:'frame '+i,style:{flex:1,height:v==='a'?'100%':v==='b'?'58%':'34%',background:colMap[v],borderRadius:'2px',opacity:v==='u'?0.7:1}})
+      )),
+      E('div',{key:'ax',style:{display:'flex',justifyContent:'space-between',marginTop:'5px',fontSize:'8px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}},[E('span',{key:1},'track acquired'),E('span',{key:2},'→ frames →'),E('span',{key:3},'now')]),
+      E('div',{key:'leg',style:{display:'flex',gap:'16px',marginTop:'11px',alignItems:'center',flexWrap:'wrap'}},[
+        E('div',{key:'1',style:{display:'flex',alignItems:'center',gap:'6px',fontSize:'10px',color:'#8A97A6'}},[E('span',{key:'a',style:{width:'10px',height:'10px',borderRadius:'2px',background:colMap.a,display:'inline-block'}}), (tr.id==='id03'?'UNKNOWN vote':tr.name+' vote')]),
+        E('div',{key:'2',style:{display:'flex',alignItems:'center',gap:'6px',fontSize:'10px',color:'#8A97A6'}},[E('span',{key:'a',style:{width:'10px',height:'10px',borderRadius:'2px',background:colMap.b,display:'inline-block'}}), 'runner-up vote']),
+        E('div',{key:'3',style:{display:'flex',alignItems:'center',gap:'6px',fontSize:'10px',color:'#8A97A6'}},[E('span',{key:'a',style:{width:'10px',height:'10px',borderRadius:'2px',background:colMap.u,display:'inline-block'}}), 'low-conf / tentative']),
+        E('div',{key:'sum',style:{marginLeft:'auto',fontSize:'11px',fontFamily:"'IBM Plex Mono',monospace",color:tr.posture==='unknown'?'#F2A93B':'#4FD995'}}, tr.id==='id03'? 'aggregated → UNKNOWN (no class clears threshold)' : 'per-frame '+tr.frameConf+'% → track-level '+tr.conf+'%')
+      ])
+    ]);
+  }
+
+  coverageMeter(){
+    const E=React.createElement;
+    return E('div',{style:{display:'flex',alignItems:'center',gap:'10px',padding:'5px 12px',border:'1px solid #1E2832',borderRadius:'7px',background:'#0E141B'}},[
+      E('span',{key:1,style:{fontSize:'9px',color:'#5C6773',letterSpacing:'.1em'}},'AIRSPACE COVERAGE'),
+      E('div',{key:2,style:{width:'84px',height:'6px',background:'#1a242d',borderRadius:'3px',overflow:'hidden'}}, E('div',{style:{height:'100%',width:'78%',background:'linear-gradient(90deg,#2FD4E0,#1d9aa6)'}})),
+      E('span',{key:3,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'13px',color:'#2FD4E0',fontWeight:600}},'78%')
+    ]);
+  }
+
+  fusionFan(tr){
+    const E=React.createElement;
+    const fan = tr.fan || {eo:'absent',ir:'absent',motion:'absent',radar:'absent',rf:'absent'};
+    const items=[
+      ['EO','eo','ID: '+(tr.name||'—')],
+      ['IR','ir','hot-blob detect'],
+      ['MOTION','motion','hdg '+(tr.head!=null?tr.head+'°':'—')],
+      ['RADAR','radar','range cue · planned'],
+      ['RF','rf','link FP · planned']
+    ];
+    const angs=[-80,-42,0,42,80];
+    const cx=280, cy=250, W=560, H=300;
+    const kids=[];
+    // agreement arcs
+    [70,120,170,220].forEach((r,i)=> kids.push(E('path',{key:'arc'+i,d:'M'+(cx-r)+' '+cy+' A'+r+' '+r+' 0 0 1 '+(cx+r)+' '+cy,fill:'none',stroke:'#15202a',strokeWidth:1})));
+    items.forEach((it,i)=>{
+      const st=fan[it[1]]||'absent'; const col=this.fanColor(st);
+      const a=(angs[i]-90)*Math.PI/180;
+      const len = st==='absent'?120: st==='weak'?168:218;
+      const x=cx+len*Math.cos(a), y=cy+len*Math.sin(a);
+      const dash=st==='absent';
+      kids.push(E('line',{key:'l'+i,x1:cx,y1:cy,x2:x,y2:y,stroke:col,strokeWidth:dash?2.5:11,strokeLinecap:'round',strokeDasharray:dash?'5 7':null,opacity:dash?0.5:0.9}, E('title',{},it[0]+': '+it[2]+' ('+st+')')));
+      if(!dash) kids.push(E('circle',{key:'t'+i,cx:x,cy:y,r:7,fill:col}));
+      const lx=cx+(len+30)*Math.cos(a), ly=cy+(len+30)*Math.sin(a);
+      kids.push(E('text',{key:'lab'+i,x:lx,y:ly,fill:dash?'#5C6773':col,fontSize:'12',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace",fontWeight:600}, it[0]));
+      kids.push(E('text',{key:'rd'+i,x:lx,y:ly+14,fill:'#5C6773',fontSize:'8.5',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"}, dash?'PLANNED':it[2]));
+    });
+    kids.push(E('circle',{key:'h0',cx:cx,cy:cy,r:30,fill:'#0a0e13',stroke:this.pc(tr.posture),strokeWidth:2.5}));
+    kids.push(E('text',{key:'hn',x:cx,y:cy-4,fill:this.pc(tr.posture),fontSize:'11',textAnchor:'middle',fontFamily:"'IBM Plex Sans',sans-serif",fontWeight:700}, tr.id));
+    kids.push(E('text',{key:'hc',x:cx,y:cy+12,fill:'#C2D0DE',fontSize:'14',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace",fontWeight:600}, (tr.conf||0)+'%'));
+    return E('svg',{width:W,height:H,viewBox:'0 0 '+W+' '+H,style:{display:'block',maxWidth:'100%'}}, kids);
+  }
+
+  sensorRoster(){
+    const E=React.createElement;
+    const rows=[
+      ['EO Camera','Identification + pose','LIVE',100],
+      ['Thermal IR','Detection · day-night','LIVE',100],
+      ['Motion / Temporal','Heading · looming · flip-killer','LIVE',100],
+      ['Radar / LFMCW','Range · micro-Doppler','PLANNED',0],
+      ['Passive RF','Link fingerprint','PLANNED',0]
+    ];
+    const stMap={LIVE:['#4FD995','●'],BUILT:['#F2A93B','◐'],PLANNED:['#5C6773','◌']};
+    return rows.map((r,i)=>{
+      const m=stMap[r[2]]; const live=r[2]==='LIVE';
+      return E('div',{key:i,style:{display:'flex',alignItems:'center',gap:'11px',padding:'11px 12px',borderRadius:'9px',border:'1px solid '+(live?'#1a2c2a':'#161e26'),background:live?'rgba(79,217,149,.04)':'#0c1117',marginBottom:'8px',opacity:live?1:0.78}},[
+        E('span',{key:'i',style:{fontSize:'16px',color:m[0],flex:'none',lineHeight:1}}, m[1]),
+        E('div',{key:'t',style:{flex:1,minWidth:0}},[
+          E('div',{key:1,style:{fontSize:'12px',fontWeight:600,color:'#E6EDF3'}}, r[0]),
+          E('div',{key:2,style:{fontSize:'9.5px',color:'#6b7785',marginTop:'1px'}}, r[1])
+        ]),
+        E('div',{key:'s',style:{textAlign:'right',flex:'none'}},[
+          E('div',{key:1,style:{fontSize:'8.5px',fontWeight:700,letterSpacing:'.06em',color:m[0],fontFamily:"'IBM Plex Mono',monospace"}}, r[2]),
+          live? E('div',{key:2,style:{display:'flex',alignItems:'center',gap:'4px',justifyContent:'flex-end',marginTop:'3px'}},[E('span',{key:'d',style:{width:'5px',height:'5px',borderRadius:'50%',background:'#4FD995',animation:'spydarBlink 1.8s infinite'}}),E('span',{key:'l',style:{fontSize:'7.5px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}},'live')]) : E('div',{key:2,style:{fontSize:'7.5px',color:'#475260',marginTop:'3px',fontFamily:"'IBM Plex Mono',monospace"}},'integrate')
+        ])
+      ]);
+    });
+  }
+
+  crossMatrix(){
+    const E=React.createElement;
+    const labels=['EO','IR','MOT','RAD','RF'];
+    // states: a=agree, w=weak, d=diverge, n=na/absent, s=self
+    const M=[
+      ['s','a','a','n','n'],
+      ['a','s','a','n','n'],
+      ['a','a','s','n','n'],
+      ['n','n','n','s','n'],
+      ['n','n','n','n','s']
+    ];
+    const cMap={a:['#4FD995','✓'],w:['#F2A93B','~'],d:['#F2555A','✗'],n:['#39434e','—'],s:['#1a242d','·']};
+    const cell=(st,key)=>{ const m=cMap[st]; return E('div',{key:key,style:{aspectRatio:'1',display:'flex',alignItems:'center',justifyContent:'center',borderRadius:'5px',background:st==='s'?'#0c1117':m[0]+'1e',border:'1px solid '+(st==='s'?'#161e26':m[0]+'44'),color:m[0],fontSize:'13px',fontFamily:"'IBM Plex Mono',monospace"}}, m[1]); };
+    const grid=[];
+    // header row
+    grid.push(E('div',{key:'corner'}));
+    labels.forEach((l,i)=>grid.push(E('div',{key:'h'+i,style:{textAlign:'center',fontSize:'9px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace",alignSelf:'center'}}, l)));
+    M.forEach((row,r)=>{
+      grid.push(E('div',{key:'rh'+r,style:{fontSize:'9px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace",alignSelf:'center'}}, labels[r]));
+      row.forEach((st,c)=> grid.push(cell(st,'c'+r+'-'+c)));
+    });
+    return E('div',{},[
+      E('div',{key:'g',style:{display:'grid',gridTemplateColumns:'30px repeat(5,1fr)',gap:'5px'}}, grid),
+      E('div',{key:'leg',style:{display:'flex',gap:'12px',marginTop:'12px',flexWrap:'wrap'}}, [['a','agree'],['w','weak'],['d','diverge'],['n','absent']].map((x,i)=>
+        E('div',{key:i,style:{display:'flex',alignItems:'center',gap:'5px',fontSize:'9px',color:'#8A97A6'}},[E('span',{key:1,style:{color:cMap[x[0]][0],fontFamily:"'IBM Plex Mono',monospace"}},cMap[x[0]][1]),x[1]])
+      )),
+      E('div',{key:'note',style:{marginTop:'12px',padding:'9px 11px',borderRadius:'7px',border:'1px dashed #2a3340',background:'#0c1117',fontSize:'10px',color:'#8A97A6',lineHeight:1.5}}, ['Headline cell ',E('b',{key:'b',style:{color:'#C2D0DE'}},'CAD-size ↔ radar'),' is pending radar integration — once live, a spoof must fool every sensor at once.'])
+    ]);
+  }
+
+  fusionExplainer(){
+    const E=React.createElement;
+    const lines=[
+      ['agree','EO + IR agree a target sits at bearing 207° → detection corroborated.'],
+      ['agree','Motion resolves nose/tail (flip-killer latched) → heading committed.'],
+      ['na','CAD-size ↔ radar cross-check pending radar integration.']
+    ];
+    const cm={agree:'#4FD995',na:'#5C6773',diverge:'#F2555A'};
+    return lines.map((l,i)=> E('div',{key:i,style:{display:'flex',gap:'9px',alignItems:'flex-start',fontSize:'10.5px',color:'#8fa0af',lineHeight:1.5}},[
+      E('span',{key:'d',style:{width:'6px',height:'6px',borderRadius:'50%',background:cm[l[0]],marginTop:'5px',flex:'none'}}),
+      E('span',{key:'t'}, l[1])
+    ]));
+  }
+
+  afThumb(af){
+    const E=React.createElement;
+    const sil = af.cat==='multirotor'
+      ? 'polygon(20% 38%,38% 38%,38% 20%,42% 20%,42% 38%,58% 38%,58% 20%,62% 20%,62% 38%,80% 38%,80% 42%,62% 42%,62% 58%,80% 58%,80% 62%,62% 62%,62% 80%,58% 80%,58% 62%,42% 62%,42% 80%,38% 80%,38% 62%,20% 62%,20% 58%,38% 58%,38% 42%,20% 42%)'
+      : af.cat==='delta'
+      ? 'polygon(50% 8%,92% 86%,50% 70%,8% 86%)'
+      : 'polygon(0 46%,40% 40%,47% 6%,53% 6%,60% 40%,100% 46%,100% 54%,53% 58%,51% 94%,49% 94%,47% 58%,0 54%)';
+    return E('div',{style:{position:'absolute',inset:0,background:'repeating-linear-gradient(45deg,#0c131a,#0c131a 6px,#0f1822 6px,#0f1822 12px)',display:'flex',alignItems:'center',justifyContent:'center'}},[
+      E('div',{key:'s',style:{width:'60%',height:'52%',background:af.real?'#34505e':'#28333d',clipPath:sil}}),
+      E('div',{key:'l',style:{position:'absolute',bottom:'7px',right:'9px',fontSize:'7.5px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace",letterSpacing:'.04em'}}, af.real?'real + synthetic':'synthetic render')
+    ]);
+  }
+  galleryCards(){
+    const E=React.createElement;
+    const afs=[
+      {id:'alti',name:'Alti Transition',cat:'VTOL',group:'G2',span:'3.00 m',refs:32,bands:'EO IR',real:false,controlled:true,tag:'HERO / VTOL'},
+      {id:'x8',name:'Skywalker X8',cat:'delta',group:'G2',span:'1.50 m',refs:24,bands:'EO IR',real:true},
+      {id:'talon',name:'Mini Talon',cat:'V-tail',group:'G1',span:'1.40 m',refs:20,bands:'EO',real:false},
+      {id:'x500',name:'x500 quad',cat:'multirotor',group:'G1',span:'0.50 m',refs:18,bands:'EO IR',real:false},
+      {id:'rq7',name:'RQ-7 Shadow',cat:'fixed-wing',group:'G3',span:'4.30 m',refs:22,bands:'EO IR',real:false,tag:'MISSION TARGET'},
+      {id:'chariot',name:'Spydar Chariot',cat:'fixed-wing',group:'G3',span:'3.50 m',refs:28,bands:'EO',real:false,controlled:true,tag:'OWN VEHICLE'}
+    ];
+    return afs.map(af=>{
+      const topChips=[];
+      if(af.tag) topChips.push(E('span',{key:'tg',style:{padding:'2px 7px',borderRadius:'5px',fontSize:'8px',fontWeight:700,letterSpacing:'.06em',color:'#2FD4E0',background:'rgba(8,12,16,.8)',border:'1px solid #1d3a3d',fontFamily:"'IBM Plex Mono',monospace"}}, af.tag));
+      const lock = af.controlled? E('span',{title:'controlled · on-prem only',style:{display:'inline-flex',alignItems:'center',gap:'4px',padding:'2px 7px',borderRadius:'5px',fontSize:'8px',color:'#F2A93B',background:'rgba(8,12,16,.8)',border:'1px solid #5a4418',fontFamily:"'IBM Plex Mono',monospace"}},['🔒 ON-PREM']) : null;
+      const realBadge = af.real
+        ? E('span',{style:{display:'inline-flex',alignItems:'center',gap:'5px',padding:'3px 8px',borderRadius:'6px',fontSize:'9px',fontWeight:700,color:'#4FD995',background:'rgba(79,217,149,.1)',border:'1px solid #1f4a3a',whiteSpace:'nowrap',flex:'none'}},['● REAL'])
+        : E('span',{style:{fontSize:'9px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace",flex:'none'}},'synthetic');
+      const chips=[this.chip(af.cat.toUpperCase(),'#8fb4c9'), this.chip('UAS '+af.group,'#8A97A6')];
+      return {id:af.id,name:af.name,span:af.span,refs:af.refs,bands:af.bands,thumb:this.afThumb(af),topChips,lock,realBadge,chips};
+    });
+  }
+  thresholdTuner(){
+    const E=React.createElement;
+    const t=this.state.thresh==null?0.43:this.state.thresh;
+    const kept=Math.round(100-Math.max(0,(t-0.30))*70);
+    const flagged=Math.round(88+Math.min(11,(t-0.30)*40));
+    return E('div',{},[
+      E('div',{key:'v',style:{display:'flex',alignItems:'baseline',gap:'8px'}},[
+        E('span',{key:1,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'26px',fontWeight:600,color:'#F2A93B'}}, t.toFixed(2)),
+        E('span',{key:2,style:{fontSize:'9.5px',color:'#6b7785'}},'cosine cutoff')
+      ]),
+      E('input',{key:'s',type:'range',min:0,max:100,value:Math.round(t*100),onInput:(e)=>this.setState({thresh:parseInt(e.target.value,10)/100}),style:{width:'100%',marginTop:'8px',accentColor:'#F2A93B'}}),
+      E('div',{key:'c',style:{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'7px',marginTop:'10px'}},[
+        ['IN-CLASS KEPT',kept+'%','#4FD995'],['NOVEL FLAGGED',flagged+'%','#F2A93B'],['AUROC','0.999','#2FD4E0']
+      ].map((m,i)=>E('div',{key:i,style:{border:'1px solid #1a242d',borderRadius:'7px',padding:'7px 8px',background:'#0c1117'}},[
+        E('div',{key:1,style:{fontSize:'7.5px',color:'#5C6773',letterSpacing:'.06em'}},m[0]),
+        E('div',{key:2,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'14px',color:m[2],marginTop:'2px'}},m[1])
+      ]))),
+      E('div',{key:'p',style:{fontSize:'8px',color:'#5C6773',marginTop:'7px',fontFamily:"'IBM Plex Mono',monospace"}},'synthetic · leave-one-out')
+    ]);
+  }
+  openSetDist(){
+    const E=React.createElement;
+    const t=this.state.thresh==null?0.43:this.state.thresh; const W=308,H=92;
+    const hump=(cx,col,w)=>{ let d='M0 '+H; for(let x=0;x<=W;x+=6){ const y=H-Math.exp(-Math.pow((x-cx)/w,2))*78; d+=' L'+x+' '+y.toFixed(1);} d+=' L'+W+' '+H+' Z'; return E('path',{d:d,fill:col+'33',stroke:col,strokeWidth:1.3}); };
+    const tx=t*W;
+    return E('svg',{width:'100%',height:H+18,viewBox:'0 0 '+W+' '+(H+18),style:{display:'block'}},[
+      hump(W*0.24,'#F2A93B',46),
+      hump(W*0.85,'#4FD995',40),
+      E('line',{key:'t',x1:tx,y1:0,x2:tx,y2:H,stroke:'#fff',strokeWidth:1.4,strokeDasharray:'3 3'}),
+      E('text',{key:'tl',x:tx,y:H+13,fill:'#fff',fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"},'thr'),
+      E('text',{key:'o',x:W*0.24,y:14,fill:'#F2A93B',fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"},'out-of-class'),
+      E('text',{key:'i',x:W*0.85,y:14,fill:'#4FD995',fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"},'in-class')
+    ]);
+  }
+  embeddingMap(){
+    const E=React.createElement;
+    const W=308,H=210;
+    const clusters=[['#8fb4c9',70,60,'X8'],['#7fb89a',230,55,'quad'],['#b89a7f',75,150,'Talon'],['#9a8fb8',235,150,'RQ-7'],['#5fb0c0',155,40,'Alti'],['#c08f9a',150,170,'Chariot']];
+    const pts=[];
+    clusters.forEach((c,ci)=>{ for(let i=0;i<9;i++){ const ang=(i*2.39+ci), r=6+((i*7+ci*3)%5)*3; pts.push(E('circle',{key:'p'+ci+'-'+i,cx:c[1]+Math.cos(ang)*r,cy:c[2]+Math.sin(ang)*r,r:2.4,fill:c[0],opacity:0.85})); } pts.push(E('text',{key:'lab'+ci,x:c[1],y:c[2]-22,fill:c[0],fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"},c[3])); });
+    // unknown region scatter (deterministic)
+    const unk=[]; for(let i=0;i<10;i++){ unk.push(E('circle',{key:'u'+i,cx:120+((i*37)%70),cy:95+((i*53)%30),r:2,fill:'#475260',opacity:0.6})); }
+    // real X8 point
+    const real=[E('circle',{key:'r1',cx:74,cy:64,r:5,fill:'none',stroke:'#4FD995',strokeWidth:1.6}),E('circle',{key:'r2',cx:74,cy:64,r:2.4,fill:'#4FD995'})];
+    return E('div',{},[
+      E('svg',{key:'s',width:'100%',height:H,viewBox:'0 0 '+W+' '+H,style:{display:'block',border:'1px solid #16202a',borderRadius:'8px',background:'#0a0e13'}}, pts.concat(unk).concat(real)),
+      E('div',{key:'lg',style:{display:'flex',gap:'14px',marginTop:'8px',fontSize:'9px',color:'#8A97A6'}},[
+        E('span',{key:1,style:{display:'flex',alignItems:'center',gap:'5px'}},[E('span',{key:'a',style:{width:'9px',height:'9px',borderRadius:'50%',border:'1.5px solid #4FD995',display:'inline-block'}}),'real X8 — lands in cluster']),
+        E('span',{key:2,style:{display:'flex',alignItems:'center',gap:'5px'}},[E('span',{key:'a',style:{width:'8px',height:'8px',borderRadius:'50%',background:'#475260',display:'inline-block'}}),'unknown region'])
+      ])
+    ]);
+  }
+  addWizard(){
+    const E=React.createElement;
+    const step=this.state.wizardStep||1;
+    const steps=['Import CAD','Render references','Embed & append','Verify'];
+    const header=E('div',{key:'h',style:{display:'flex',gap:'0',marginBottom:'18px'}}, steps.map((s,i)=>{
+      const n=i+1; const active=n===step, done=n<step;
+      return E('div',{key:i,style:{flex:1,display:'flex',alignItems:'center',gap:'8px'}},[
+        E('div',{key:'c',style:{display:'flex',alignItems:'center',gap:'8px',flex:'none'}},[
+          E('span',{key:'n',style:{width:'24px',height:'24px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'11px',fontWeight:700,fontFamily:"'IBM Plex Mono',monospace",color:active||done?'#06222a':'#5C6773',background:active||done?'#2FD4E0':'#0c1117',border:'1px solid '+(active||done?'#2FD4E0':'#1E2832')}}, done?'✓':n),
+          E('span',{key:'l',style:{fontSize:'10px',color:active?'#E6EDF3':'#5C6773',whiteSpace:'nowrap'}}, s)
+        ]),
+        i<3? E('div',{key:'ln',style:{flex:1,height:'1px',background:done?'#2FD4E0':'#1E2832',margin:'0 8px'}}):null
+      ]);
+    }));
+    let body;
+    if(step===1) body=E('div',{key:'b'},[
+      E('div',{key:'dz',style:{height:'130px',border:'1.5px dashed #2a3a44',borderRadius:'10px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'7px',background:'#0c1117'}},[
+        E('div',{key:1,style:{fontSize:'22px'}},'⬚'),
+        E('div',{key:2,style:{fontSize:'12px',color:'#C2D0DE'}},'Drop a mesh — .obj / .stl / .glb'),
+        E('div',{key:3,style:{fontSize:'10px',color:'#5C6773'}},'controlled CAD never leaves this environment')
+      ]),
+      E('div',{key:'nm',style:{display:'flex',gap:'14px',marginTop:'14px',alignItems:'center'}},[
+        E('div',{key:1,style:{flex:1}},[E('div',{key:'a',style:{fontSize:'9px',color:'#5C6773'}},'DETECTED UNITS'),E('div',{key:'b',style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'13px',color:'#C2D0DE'}},'mm → normalized to metric')]),
+        E('div',{key:2,style:{flex:1}},[E('div',{key:'a',style:{fontSize:'9px',color:'#5C6773'}},'TRUE SPAN'),E('div',{key:'b',style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'13px',color:'#4FD995'}},'3.50 m ✓')])
+      ])
+    ]);
+    else if(step===2) body=E('div',{key:'b'},[
+      E('div',{key:'t',style:{display:'flex',gap:'8px',marginBottom:'12px'}},[
+        E('span',{key:1,style:{padding:'4px 10px',borderRadius:'6px',fontSize:'10px',color:'#06222a',background:'#2FD4E0',fontWeight:600}},'clean'),
+        E('span',{key:2,style:{padding:'4px 10px',borderRadius:'6px',fontSize:'10px',color:'#8A97A6',border:'1px solid #1E2832'}},'+ thermal'),
+        E('span',{key:3,style:{padding:'4px 10px',borderRadius:'6px',fontSize:'10px',color:'#8A97A6',border:'1px solid #1E2832'}},'domain-randomized')
+      ]),
+      E('div',{key:'g',style:{display:'grid',gridTemplateColumns:'repeat(6,1fr)',gap:'7px'}}, Array.from({length:12}).map((_,i)=>E('div',{key:i,style:{aspectRatio:'1',borderRadius:'6px',background:'repeating-linear-gradient(45deg,#0c131a,#0c131a 4px,#0f1822 4px,#0f1822 8px)',border:'1px solid #16202a'}}))),
+      E('div',{key:'n',style:{marginTop:'10px',fontSize:'10px',color:'#6b7785',fontFamily:"'IBM Plex Mono',monospace"}},'200 reference views · pose-randomized · auto-labeled')
+    ]);
+    else if(step===3) body=E('div',{key:'b',style:{textAlign:'center',padding:'14px 0'}},[
+      E('div',{key:1,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'13px',color:'#C2D0DE'}},'ResNet18 → 128-d L2 embeddings'),
+      E('div',{key:2,style:{height:'8px',borderRadius:'4px',background:'#1a242d',margin:'16px 0 10px',overflow:'hidden'}},E('div',{style:{height:'100%',width:'100%',background:'linear-gradient(90deg,#2FD4E0,#1d9aa6)'}})),
+      E('div',{key:3,style:{fontSize:'12px',color:'#4FD995',fontWeight:600}},'Appended to gallery.npz · 28 vectors'),
+      E('div',{key:4,style:{fontSize:'11px',color:'#F2A93B',marginTop:'8px',fontWeight:600,letterSpacing:'.04em'}},'NO RETRAINING REQUIRED')
+    ]);
+    else body=E('div',{key:'b'},[
+      E('div',{key:'m'}, this.embeddingMap()),
+      E('div',{key:'s',style:{marginTop:'12px',padding:'10px 12px',borderRadius:'8px',border:'1px solid #1f4a3a',background:'rgba(79,217,149,.08)',fontSize:'11px',color:'#4FD995'}},'✓ Well-separated from existing clusters — safe to field.')
+    ]);
+    const last=step===4;
+    const footer=E('div',{key:'f',style:{display:'flex',justifyContent:'space-between',marginTop:'20px'}},[
+      E('button',{key:'bk',onClick:()=>this.setState({wizardStep:Math.max(1,step-1)}),style:{height:'34px',padding:'0 16px',borderRadius:'8px',border:'1px solid #1E2832',background:'#0c1117',color:'#8A97A6',fontSize:'11px',cursor:'pointer',fontFamily:"'IBM Plex Sans',sans-serif",visibility:step===1?'hidden':'visible'}},'← Back'),
+      E('button',{key:'nx',onClick:()=> last? this.setState({wizardStep:0}) : this.setState({wizardStep:step+1}),style:{height:'34px',padding:'0 18px',borderRadius:'8px',border:'1px solid #1d3a3d',background:'linear-gradient(180deg,#2FD4E0,#1d9aa6)',color:'#06222a',fontSize:'11px',fontWeight:700,cursor:'pointer',fontFamily:"'IBM Plex Sans',sans-serif"}}, last?'Done — added ✓':'Next →')
+    ]);
+    return E('div',{}, [header, body, footer]);
+  }
+
+  evScorecard(){
+    const E=React.createElement;
+    const mode=this.state.evalMode||'real';
+    const cards=[
+      {v:'98.7%',l:'ID TOP-1',c:'held-out synthetic · 5 airframes incl. RQ-7',prov:'SYNTHETIC',hero:false},
+      {v:'0.999',l:'OPEN-SET AUROC',c:'flags unseen airframes as "unknown"',prov:'SYNTHETIC',hero:false},
+      {v:'85% / ~100%',l:'REAL X8 ID · frame / track',c:'a real, never-seen airframe — the headline',prov:'REAL',hero:true},
+      {v:'29.8→1.4 px',l:'KEYPOINT ERROR',c:'30-frame real fine-tune · 94% track continuity',prov:'REAL',hero:false}
+    ];
+    return cards.map((c,i)=>{
+      const real=c.prov==='REAL';
+      const provCol = real? '#4FD995':'#6f9bc4';
+      const match = (mode==='real')===real;
+      return E('div',{key:i,style:{position:'relative',border:'1px solid '+(c.hero?'#1f5a44':(match?provCol+'55':'#1E2832')),borderRadius:'12px',background:c.hero?'linear-gradient(180deg,rgba(79,217,149,.08),#0e1117)':'#0E141B',padding:'15px 16px',boxShadow:c.hero?'0 0 0 1px rgba(79,217,149,.15)':'none'}},[
+        E('div',{key:'p',style:{position:'absolute',top:'12px',right:'12px',fontSize:'8px',fontWeight:700,letterSpacing:'.08em',color:provCol,border:'1px solid '+provCol+'55',borderRadius:'4px',padding:'2px 6px',background:provCol+'14',fontFamily:"'IBM Plex Mono',monospace"}}, c.prov),
+        E('div',{key:'v',style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:c.v.length>7?'21px':'27px',fontWeight:700,color:c.hero?'#4FD995':'#E6EDF3',lineHeight:1.05,marginTop:'4px'}}, c.v),
+        E('div',{key:'l',style:{fontSize:'9.5px',color:'#8fb4c9',letterSpacing:'.06em',marginTop:'7px',fontWeight:600}}, c.l),
+        E('div',{key:'c',style:{fontSize:'9.5px',color:'#6b7785',marginTop:'5px',lineHeight:1.45}}, c.c)
+      ]);
+    });
+  }
+  evConfusion(){
+    const E=React.createElement;
+    const labs=['X8','Tln','qd','RQ7','Alt'];
+    const M=[[98,1,0,1,0],[2,97,0,1,0],[0,0,99,0,1],[1,1,0,97,1],[0,0,1,1,98]];
+    const grid=[E('div',{key:'c0'})];
+    labs.forEach((l,i)=>grid.push(E('div',{key:'h'+i,style:{fontSize:'8px',color:'#5C6773',textAlign:'center',fontFamily:"'IBM Plex Mono',monospace",alignSelf:'center'}},l)));
+    M.forEach((row,r)=>{
+      grid.push(E('div',{key:'rh'+r,style:{fontSize:'8px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace",alignSelf:'center'}},labs[r]));
+      row.forEach((v,c)=>{
+        const diag=r===c;
+        const col= diag? '#4FD995' : v>0? '#F2A93B':'#243039';
+        const op= diag? v/100 : v>0? 0.25+v/100:0.12;
+        grid.push(E('div',{key:'c'+r+c,style:{aspectRatio:'1',display:'flex',alignItems:'center',justifyContent:'center',borderRadius:'3px',background:col,opacity:Math.max(0.12,op),fontSize:'7.5px',color:diag?'#06120c':'#0a0e13',fontFamily:"'IBM Plex Mono',monospace",fontWeight:600}}, v>0?v:''));
+      });
+    });
+    return E('div',{style:{display:'grid',gridTemplateColumns:'20px repeat(5,1fr)',gap:'3px'}}, grid);
+  }
+  evViewpoint(){
+    const E=React.createElement;
+    const cols=8, rows=5;
+    const cells=[];
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+      // hotspots near symmetric side-on angles
+      const sym = (c===1||c===6) ? 0.8 : 0;
+      const v = Math.min(1, 0.12 + sym + (r===2?0.15:0) + ((c+r)%4===0?0.1:0));
+      const col = v>0.6? '#F2555A' : v>0.35? '#F2A93B' : '#3a9a6f';
+      cells.push(E('div',{key:r+'-'+c,style:{aspectRatio:'1',borderRadius:'2px',background:col,opacity:0.25+v*0.7}}));
+    }
+    return E('div',{},[
+      E('div',{key:'g',style:{display:'grid',gridTemplateColumns:'repeat(8,1fr)',gap:'3px'}}, cells),
+      E('div',{key:'x',style:{display:'flex',justifyContent:'space-between',marginTop:'5px',fontSize:'7.5px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}},[E('span',{key:1},'azimuth →'),E('span',{key:2},'hot @ side-on (symmetry)')])
+    ]);
+  }
+  evPixels(){
+    const E=React.createElement;
+    const W=440,H=150,pad=28;
+    const pts=[]; for(let i=0;i<=10;i++){ const x=i/10; const err=2+ 60*Math.exp(-x*3.2); pts.push([pad+x*(W-pad-6), H-pad-(1-err/62)*(H-pad-10)*0+ (err/62)*(H-pad-12)]); }
+    const path='M'+pts.map(p=>p[0].toFixed(0)+' '+p[1].toFixed(0)).join(' L');
+    return E('svg',{width:'100%',height:H,viewBox:'0 0 '+W+' '+H,style:{display:'block'}},[
+      // zone bands
+      E('rect',{key:'z1',x:pad,y:8,width:(W-pad-6)*0.22,height:H-pad-8,fill:'#F2555A',opacity:0.07}),
+      E('rect',{key:'z2',x:pad+(W-pad-6)*0.22,y:8,width:(W-pad-6)*0.24,height:H-pad-8,fill:'#F2A93B',opacity:0.07}),
+      E('rect',{key:'z3',x:pad+(W-pad-6)*0.46,y:8,width:(W-pad-6)*0.54,height:H-pad-8,fill:'#4FD995',opacity:0.07}),
+      E('line',{key:'ax',x1:pad,y1:H-pad,x2:W-4,y2:H-pad,stroke:'#243039',strokeWidth:1}),
+      E('line',{key:'ay',x1:pad,y1:8,x2:pad,y2:H-pad,stroke:'#243039',strokeWidth:1}),
+      E('path',{key:'p',d:path,fill:'none',stroke:'#2FD4E0',strokeWidth:2.4}),
+      E('text',{key:'t1',x:pad+10,y:22,fill:'#F2555A',fontSize:'7.5',fontFamily:"'IBM Plex Mono',monospace"},'bearing only'),
+      E('text',{key:'t3',x:W-90,y:22,fill:'#4FD995',fontSize:'7.5',fontFamily:"'IBM Plex Mono',monospace"},'full 6DoF'),
+      E('text',{key:'xl',x:W/2,y:H-6,fill:'#5C6773',fontSize:'8',textAnchor:'middle',fontFamily:"'IBM Plex Mono',monospace"},'pixels on target →'),
+      E('text',{key:'yl',x:6,y:H/2,fill:'#5C6773',fontSize:'8',transform:'rotate(-90 8 '+(H/2)+')',fontFamily:"'IBM Plex Mono',monospace"},'pose err (px)')
+    ]);
+  }
+  evKpTrend(){
+    const E=React.createElement;
+    const bar=(label,v,max,col,sub)=> E('div',{style:{display:'flex',alignItems:'center',gap:'10px'}},[
+      E('span',{key:1,style:{width:'48px',fontSize:'10px',color:'#8A97A6',fontFamily:"'IBM Plex Mono',monospace"}},label),
+      E('div',{key:2,style:{flex:1,height:'18px',background:'#13202a',borderRadius:'4px',overflow:'hidden'}}, E('div',{style:{height:'100%',width:(v/max*100)+'%',background:col,borderRadius:'4px'}})),
+      E('span',{key:3,style:{width:'52px',textAlign:'right',fontFamily:"'IBM Plex Mono',monospace",fontSize:'12px',color:col}}, v+' px')
+    ]);
+    return E('div',{style:{display:'flex',flexDirection:'column',gap:'9px'}},[
+      bar('before',29.8,30,'#F2555A'),
+      bar('after',1.4,30,'#4FD995'),
+      E('div',{key:'n',style:{fontSize:'9.5px',color:'#6b7785',marginTop:'2px'}},'30 real frames closed a 21× sim-to-real keypoint gap.')
+    ]);
+  }
+  evRealVideo(){
+    const E=React.createElement;
+    return E('div',{},[
+      E('div',{key:'v',style:{position:'relative',aspectRatio:'16/9',borderRadius:'9px',overflow:'hidden',border:'1px solid #25404e',background:'linear-gradient(180deg,#1a3340 0%,#22414e 45%,#16252e 100%)'}},[
+        E('div',{key:'air',style:{position:'absolute',left:'48%',top:'46%',transform:'translate(-50%,-50%)',width:'78px',height:'17px',background:'#0d141a',clipPath:'polygon(0 45%,40% 40%,47% 6%,53% 6%,60% 40%,100% 45%,100% 55%,53% 58%,51% 94%,49% 94%,47% 58%,0 54%)'}}),
+        E('div',{key:'box',style:{position:'absolute',left:'48%',top:'46%',transform:'translate(-50%,-50%)',width:'120px',height:'72px',border:'1.5px solid #F2555A'}}, E('div',{style:{position:'absolute',top:'-17px',left:'-1px',background:'#F2555A',color:'#0a0e13',fontSize:'9px',fontWeight:700,padding:'0 5px',fontFamily:"'IBM Plex Mono',monospace"}},'X8 0.86')),
+        E('svg',{key:'kp',style:{position:'absolute',left:'48%',top:'46%',transform:'translate(-50%,-50%)'},width:120,height:60,viewBox:'0 0 120 60'},[[60,8],[14,32],[106,32]].map((p,i)=>E('circle',{key:i,cx:p[0],cy:p[1],r:3,fill:'none',stroke:'#FFD84D',strokeWidth:1.6}))),
+        E('div',{key:'rec',style:{position:'absolute',top:'8px',left:'10px',fontFamily:"'IBM Plex Mono',monospace",fontSize:'9px',color:'#4FD995'}},'● REAL CLIP · X8 flyby · 1080p'),
+        E('div',{key:'h',style:{position:'absolute',left:'48%',top:'46%',transform:'translate(-50%,-50%) rotate(86deg)',width:'2px',height:'46px',background:'linear-gradient(180deg,transparent,#E055C9)'}})
+      ]),
+      E('div',{key:'bar',style:{display:'flex',alignItems:'center',gap:'9px',marginTop:'9px'}},[
+        E('span',{key:1,style:{fontSize:'12px',color:'#8A97A6'}},'▶'),
+        E('div',{key:2,style:{flex:1,height:'4px',background:'#1a242d',borderRadius:'2px',overflow:'hidden'}}, E('div',{style:{height:'100%',width:'62%',background:'#2FD4E0'}})),
+        E('span',{key:3,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'9px',color:'#5C6773'}},'0:18 / 0:29')
+      ])
+    ]);
+  }
+  evThermal(){
+    const E=React.createElement;
+    const row=(ok,title,sub)=> E('div',{style:{display:'flex',gap:'10px',alignItems:'flex-start',padding:'9px 11px',borderRadius:'8px',border:'1px solid '+(ok?'#1f4a3a':'#5a4418'),background:ok?'rgba(79,217,149,.06)':'rgba(242,169,59,.06)'}},[
+      E('span',{key:1,style:{fontSize:'14px',color:ok?'#4FD995':'#F2A93B',flex:'none',lineHeight:1.2}}, ok?'✓':'✗'),
+      E('div',{key:2},[E('div',{key:1,style:{fontSize:'11.5px',color:ok?'#4FD995':'#F2A93B',fontWeight:600}},title),E('div',{key:2,style:{fontSize:'10px',color:'#8fa0af',marginTop:'2px',lineHeight:1.45}},sub)])
+    ]);
+    return E('div',{style:{display:'flex',flexDirection:'column',gap:'8px'}},[
+      row(true,'IR detects (hot blob vs cold sky)','Robust day/night detection — the role we field IR for.'),
+      row(false,'IR does NOT identify','Across 2 real thermal sets (Halmstad, Anti-UAV-RGBT) make/model collapses to one class → IR scoped to detection.'),
+      E('div',{key:'n',style:{fontSize:'10px',color:'#6b7785',fontStyle:'italic',marginTop:'2px'}},'We de-risked our own claim before fielding it.')
+    ]);
+  }
+  evBird(){
+    const E=React.createElement;
+    return E('div',{style:{display:'flex',alignItems:'center',gap:'16px'}},[
+      E('div',{key:'s',style:{flex:'none',textAlign:'center'}},[
+        E('div',{key:1,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'24px',color:'#4FD995',fontWeight:700}},'0'),
+        E('div',{key:2,style:{fontSize:'8.5px',color:'#5C6773'}},'false IDs / 142 bird frames')
+      ]),
+      E('div',{key:'b',style:{flex:1}},[
+        E('div',{key:1,style:{display:'flex',height:'14px',borderRadius:'4px',overflow:'hidden',background:'#1a242d'}},[E('div',{key:'a',style:{width:'97%',background:'#4FD995'}}),E('div',{key:'b',style:{width:'3%',background:'#5C6773'}})]),
+        E('div',{key:2,style:{fontSize:'10px',color:'#8fa0af',marginTop:'6px',lineHeight:1.4}},'Distractor-trained detector rejects birds & balloons as low-score — not misread as threats.')
+      ])
+    ]);
+  }
+
+  studioPreview(){
+    const E=React.createElement;
+    const ir=this.state.studioBand==='ir';
+    const ov=this.state.overlay||{box:true,kp:true,mask:false,axes:true};
+    const bg = ir
+      ? 'radial-gradient(circle at 52% 44%, #d6611c 0%, #7a2e10 9%, #3a1a3a 30%, #120e28 60%, #0a0b1c 100%)'
+      : 'linear-gradient(180deg,#16323f 0%,#1d4250 38%,#0e2530 100%)';
+    const sil = 'polygon(50% 10%,90% 84%,50% 68%,10% 84%)'; // delta
+    const kids=[];
+    // airframe
+    kids.push(E('div',{key:'air',style:{position:'absolute',left:'52%',top:'44%',transform:'translate(-50%,-50%)',width:'150px',height:'92px',background:ir?'#ffd9a0':'#1c2a33',clipPath:sil,opacity:ir?0.95:1}}));
+    if(ov.mask) kids.push(E('div',{key:'mask',style:{position:'absolute',left:'52%',top:'44%',transform:'translate(-50%,-50%)',width:'150px',height:'92px',background:'#2FD4E0',opacity:0.32,clipPath:sil}}));
+    if(ov.box) kids.push(E('div',{key:'box',style:{position:'absolute',left:'52%',top:'44%',transform:'translate(-50%,-50%)',width:'168px',height:'108px',border:'1.5px solid #2FD4E0'}},
+      E('div',{style:{position:'absolute',top:'-16px',left:'-1px',background:'#2FD4E0',color:'#06222a',fontSize:'9px',fontWeight:700,padding:'0 5px',fontFamily:"'IBM Plex Mono',monospace"}},'x8 1.00')));
+    if(ov.axes) kids.push(E('svg',{key:'ax',style:{position:'absolute',left:'52%',top:'44%',transform:'translate(-50%,-50%)'},width:90,height:90,viewBox:'0 0 90 90'},[
+      E('line',{key:1,x1:45,y1:45,x2:45,y2:16,stroke:'#4FD995',strokeWidth:2.4}),E('line',{key:2,x1:45,y1:45,x2:74,y2:54,stroke:'#F2555A',strokeWidth:2.4}),E('line',{key:3,x1:45,y1:45,x2:20,y2:56,stroke:'#2FD4E0',strokeWidth:2.4})]));
+    if(ov.kp) kids.push(E('svg',{key:'kp',style:{position:'absolute',left:'52%',top:'44%',transform:'translate(-50%,-50%)'},width:160,height:96,viewBox:'0 0 160 96'},
+      [[80,12],[20,74],[140,74],[80,60]].map((p,i)=>E('circle',{key:i,cx:p[0],cy:p[1],r:3.4,fill:'none',stroke:'#FFD84D',strokeWidth:1.8}))));
+    return E('div',{style:{position:'relative',width:'100%',maxWidth:'560px',aspectRatio:'16/10',borderRadius:'10px',overflow:'hidden',border:'1px solid #1E2832',background:bg}},[
+      E('div',{key:'hud',style:{position:'absolute',top:'9px',left:'11px',fontFamily:"'IBM Plex Mono',monospace",fontSize:'9px',color:ir?'#F2A93B':'#7fd0dd'}}, ir?'IR · thermal band · hot airframe vs cold sky':'EO · physically-based render'),
+      E('div',{key:'sky',style:{position:'absolute',top:'9px',right:'11px',fontFamily:"'IBM Plex Mono',monospace",fontSize:'9px',color:'#8A97A6'}}, ir?'emissive':'HDRI · kloofendal_02'),
+    ].concat(kids));
+  }
+  drPanel(){
+    const E=React.createElement;
+    const rows=[['Sky / HDRI',0.15,0.92],['Lighting',0.3,0.7],['Fog / haze',0.05,0.45],['Motion blur',0.1,0.4],['Lens dirt',0.0,0.25]];
+    const out = rows.map((r,i)=> E('div',{key:i,style:{marginBottom:'10px'}},[
+      E('div',{key:'l',style:{display:'flex',justifyContent:'space-between',marginBottom:'4px'}},[
+        E('span',{key:1,style:{fontSize:'10px',color:'#C2D0DE'}},r[0]),
+        E('span',{key:2,style:{fontSize:'8.5px',color:'#5C6773',fontFamily:"'IBM Plex Mono',monospace"}}, r[1].toFixed(2)+'–'+r[2].toFixed(2))
+      ]),
+      E('div',{key:'t',style:{position:'relative',height:'6px',borderRadius:'3px',background:'#1a242d'}},
+        E('div',{style:{position:'absolute',left:(r[1]*100)+'%',width:((r[2]-r[1])*100)+'%',top:0,bottom:0,background:'linear-gradient(90deg,#1d9aa6,#2FD4E0)',borderRadius:'3px'}}))
+    ]));
+    if(this.state.studioMode==='distractors') out.push(E('div',{key:'dx',style:{display:'flex',gap:'7px',marginTop:'4px'}},[
+      E('span',{key:1,style:{padding:'3px 9px',borderRadius:'6px',fontSize:'10px',color:'#06222a',background:'#2FD4E0'}},'birds'),
+      E('span',{key:2,style:{padding:'3px 9px',borderRadius:'6px',fontSize:'10px',color:'#06222a',background:'#2FD4E0'}},'balloons'),
+      E('span',{key:3,style:{fontSize:'8.5px',color:'#6b7785',alignSelf:'center'}},'→ learn to reject')
+    ]));
+    return E('div',{}, out);
+  }
+  varietyStrip(){
+    const E=React.createElement;
+    const ir=this.state.studioBand==='ir';
+    return E('div',{style:{display:'grid',gridTemplateColumns:'repeat(8,1fr)',gap:'6px'}}, Array.from({length:8}).map((_,i)=>{
+      const tint = ir? 'radial-gradient(circle at 50% 45%, #c8551a, #2a1530)' : ['#16323f','#1d4250','#0e2530','#243f33','#2a2f3f'][i%5];
+      return E('div',{key:i,style:{aspectRatio:'4/3',borderRadius:'6px',border:'1px solid #16202a',background:tint,position:'relative',overflow:'hidden'}},
+        E('div',{style:{position:'absolute',left:'50%',top:'46%',transform:'translate(-50%,-50%) rotate('+(i*22-44)+'deg)',width:'58%',height:'34%',background:ir?'#ffd9a0':'#1c2a33',clipPath:'polygon(50% 10%,90% 84%,50% 68%,10% 84%)'}}));
+    }));
+  }
+  labelIndex(){
+    const E=React.createElement;
+    return E('div',{},[
+      E('div',{key:'q',style:{display:'flex',gap:'6px',flexWrap:'wrap',marginBottom:'10px'}},[
+        E('span',{key:1,style:{padding:'4px 9px',borderRadius:'6px',fontSize:'10px',color:'#2FD4E0',border:'1px solid #1d3a3d',background:'rgba(47,212,224,.07)',fontFamily:"'IBM Plex Mono',monospace"}},'roll > 30°'),
+        E('span',{key:2,style:{padding:'4px 9px',borderRadius:'6px',fontSize:'10px',color:'#8A97A6',border:'1px solid #1E2832',fontFamily:"'IBM Plex Mono',monospace"}},'+ range < 200 m'),
+      ]),
+      E('div',{key:'r',style:{display:'flex',alignItems:'baseline',gap:'8px',marginBottom:'9px'}},[
+        E('span',{key:1,style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:'18px',color:'#C2D0DE'}},'37'),
+        E('span',{key:2,style:{fontSize:'10px',color:'#5C6773'}},'/ 200 frames match')
+      ]),
+      E('div',{key:'g',style:{display:'grid',gridTemplateColumns:'repeat(10,1fr)',gap:'3px'}}, Array.from({length:40}).map((_,i)=>{
+        const hit=[2,5,7,11,14,18,21,25,28,31,34,37].includes(i)|| i%9===0;
+        return E('div',{key:i,style:{aspectRatio:'1',borderRadius:'2px',background:hit?'#2FD4E0':'#1a242d',opacity:hit?0.9:0.5}});
+      }))
+    ]);
+  }
+  frameInspector(){
+    const E=React.createElement;
+    const rows=[['pose','pitch +6° roll +34° yaw 118°'],['bbox','[412, 280, 196, 124]'],['keypoints','5 / 5 visible'],['range','167 m'],['sky','overcast_soil_4k'],['fog','0.21'],['airframe','Skywalker X8']];
+    return E('div',{style:{display:'flex',flexDirection:'column',gap:'6px',fontFamily:"'IBM Plex Mono',monospace",fontSize:'10.5px'}}, rows.map((r,i)=>
+      E('div',{key:i,style:{display:'flex',justifyContent:'space-between',gap:'10px'}},[E('span',{key:1,style:{color:'#5C6773'}},r[0]),E('span',{key:2,style:{color:'#C2D0DE',textAlign:'right'}},r[1])])
+    ));
+  }
+
+  detailData(tr){
+    const fmtSigned=(v)=> (v>=0?'+':'')+v+'°';
+    return {
+      id:tr.id, name:tr.name, color:this.pc(tr.posture),
+      verdictColor: tr.posture==='unknown'?'#F2A93B':'#E6EDF3',
+      shapeFill: tr.posture==='unknown'? 'transparent' : this.pc(tr.posture),
+      spoof: !!tr.spoof,
+      chips:this.detChips(tr),
+      intentLine: tr.intent + (tr.closing>0? ' · closing '+tr.closing+' m/s · TTC '+(tr.ttc||'—')+' s' : ' · stationary · TTC —'),
+      confBig:this.confBar(tr,true),
+      openBadge:this.openBadge(tr),
+      bigFan:this.bigFan(tr),
+      ledger:this.ledger(tr),
+      attDial:this.attitudeDial(tr,132),
+      pitch: tr.pitch!=null? fmtSigned(tr.pitch):'—',
+      roll: tr.roll!=null? fmtSigned(tr.roll):'—',
+      yaw: tr.yaw!=null? tr.yaw+'°':'—',
+      regimeChip:this.regimeChip(tr),
+      range: tr.range? Math.round(tr.range)+' m':'—',
+      closing: tr.closing>0? tr.closing : '0',
+      closingColor: tr.closing>0? '#F2555A':'#8A97A6',
+      ttc: tr.ttc? tr.ttc+' s':'—',
+      poseThumb:this.poseThumb(tr),
+      kpList:this.kpList(tr),
+      pxMeter:this.pxMeter(tr),
+      candidates:this.candidates(tr),
+      refStrip:this.refStrip(tr),
+      voteStrip:this.voteStrip(tr),
+      handoffLabel: this.state.handoffSent? 'HANDED OFF ✓':'HAND OFF →',
+      handoffStyle:{ height:'30px', padding:'0 15px', borderRadius:'7px', cursor:'pointer', fontFamily:"'IBM Plex Sans',sans-serif", fontSize:'11px', fontWeight:700, letterSpacing:'.04em', border:'1px solid '+(this.state.handoffSent?'#1f4a3a':'#1d3a3d'), color:this.state.handoffSent?'#4FD995':'#06222a', background:this.state.handoffSent?'rgba(79,217,149,.1)':'linear-gradient(180deg,#2FD4E0,#1d9aa6)' }
+    };
+  }
+
+  // map markers (animated)
+  mapMarkers(){
+    const E=React.createElement;
+    const max=3000;
+    return this.state.tracks.map(tr=>{
+      const rad=Math.min(tr.range,max)/max*0.455;
+      const a=tr.bearing*Math.PI/180;
+      const x=50+rad*100*Math.sin(a);
+      const y=50-rad*100*Math.cos(a);
+      const col=this.pc(tr.posture);
+      const sel=tr.id===this.state.selectedId;
+      const kids=[];
+      // selection ring
+      if(sel && !tr.rejected) kids.push(E('div',{key:'ring',style:{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-50%)',width:'34px',height:'34px',border:'1px solid '+col,borderRadius:'7px',animation:'spydarPulse 1.8s infinite'}}));
+      // shape
+      let shape;
+      if(tr.ghost) shape=E('div',{style:{width:'14px',height:'14px',borderRadius:'50%',border:'1.5px dashed '+col,opacity:.7}});
+      else if(tr.rejected) shape=E('div',{style:{fontFamily:"'IBM Plex Mono',monospace",color:col,fontSize:'13px',opacity:.6}},'✕');
+      else if(tr.posture==='friendly') shape=E('div',{style:{width:'13px',height:'13px',borderRadius:'50%',background:col,boxShadow:'0 0 9px '+col}});
+      else if(tr.posture==='unknown') shape=E('div',{style:{width:'13px',height:'13px',transform:'rotate(45deg)',border:'2px solid '+col,boxShadow:'0 0 9px '+col+'88'}});
+      else shape=E('div',{style:{width:'13px',height:'13px',transform:'rotate(45deg)',background:col,boxShadow:'0 0 10px '+col}});
+      kids.push(E('div',{key:'s',style:{display:'flex',alignItems:'center',justifyContent:'center'}}, shape));
+      // heading vector
+      if(!tr.rejected && !tr.ghost && tr.head!=null){
+        kids.push(E('div',{key:'hv',style:{position:'absolute',left:'50%',top:'50%',width:'2px',height:'24px',background:'linear-gradient(180deg,'+col+',transparent)',transformOrigin:'top center',transform:'translate(-50%,0) rotate('+(tr.head+180)+'deg)'}}));
+      }
+      // label
+      if(!tr.rejected){
+        const lab = tr.ghost? 'RADAR CUE' : (tr.id+' · '+(tr.posture==='unknown'&&tr.name==='UNKNOWN'?'UNKNOWN':tr.name));
+        kids.push(E('div',{key:'lab',onClick:()=>this.setState({selectedId:tr.id}),style:{position:'absolute',left:'50%',top:'18px',transform:'translateX(-50%)',whiteSpace:'nowrap',fontFamily:"'IBM Plex Mono',monospace",fontSize:'8.5px',color:sel?col:'#8A97A6',background:'rgba(8,12,16,.75)',padding:'2px 6px',borderRadius:'4px',border:'1px solid '+(sel?col+'88':'#1a2630'),letterSpacing:'.02em',cursor:'pointer'}}, lab));
+      }
+      return E('div',{key:tr.id,onClick:()=>!tr.rejected&&this.setState({selectedId:tr.id}),style:{position:'absolute',left:x+'%',top:y+'%',transform:'translate(-50%,-50%)',cursor:tr.rejected?'default':'pointer',zIndex:sel?5:4}}, kids);
+    });
+  }
+
+  // feed overlay (EO pipeline overlays for selected, fallback id07)
+  feedOverlay(){
+    const E=React.createElement;
+    const tr=this.state.tracks.find(t=>t.id===this.state.selectedId) || this.state.tracks[0];
+    const col=this.pc(tr.posture);
+    const cx=46, cy=44; // % position of target in frame
+    return E('div',{style:{position:'absolute',inset:0,pointerEvents:'none'}},[
+      // detection box
+      E('div',{key:'box',style:{position:'absolute',left:cx+'%',top:cy+'%',width:'150px',height:'92px',transform:'translate(-50%,-50%)',border:'1.5px solid '+col,boxShadow:'0 0 0 1px rgba(0,0,0,.4)'}},[
+        E('div',{key:'tl',style:{position:'absolute',top:'-1px',left:'-1px',width:'12px',height:'12px',borderTop:'2px solid '+col,borderLeft:'2px solid '+col}}),
+        E('div',{key:'br',style:{position:'absolute',bottom:'-1px',right:'-1px',width:'12px',height:'12px',borderBottom:'2px solid '+col,borderRight:'2px solid '+col}}),
+        E('div',{key:'lab',style:{position:'absolute',top:'-22px',left:'-1px',background:col,color:'#0a0e13',fontFamily:"'IBM Plex Mono',monospace",fontSize:'10px',fontWeight:600,padding:'1px 6px',whiteSpace:'nowrap'}}, tr.name+' · '+(tr.frameConf||tr.conf)+'%')
+      ]),
+      // crude airframe silhouette
+      E('div',{key:'air',style:{position:'absolute',left:cx+'%',top:cy+'%',transform:'translate(-50%,-50%)',width:'74px',height:'14px',background:'#0c1116',opacity:.92,clipPath:'polygon(0 45%,38% 38%,46% 0,54% 0,62% 38%,100% 45%,100% 55%,54% 60%,50% 100%,46% 100%,38% 60%,0 55%)'}}),
+      // pose axes triad
+      E('svg',{key:'axes',style:{position:'absolute',left:cx+'%',top:cy+'%',transform:'translate(-50%,-50%)'},width:80,height:80,viewBox:'0 0 80 80'},[
+        E('line',{key:'z',x1:40,y1:40,x2:40,y2:14,stroke:'#4FD995',strokeWidth:2}),
+        E('line',{key:'x',x1:40,y1:40,x2:66,y2:48,stroke:'#F2555A',strokeWidth:2}),
+        E('line',{key:'y',x1:40,y1:40,x2:20,y2:52,stroke:'#2FD4E0',strokeWidth:2}),
+      ]),
+      // keypoints
+      E('svg',{key:'kp',style:{position:'absolute',left:cx+'%',top:cy+'%',transform:'translate(-50%,-50%)'},width:120,height:60,viewBox:'0 0 120 60'},[
+        [60,8,1],[16,32,1],[104,32,1],[60,52,0.4],[60,30,1]
+      ].map((p,i)=>E('circle',{key:i,cx:p[0],cy:p[1],r:3,fill:'none',stroke:'#FFD84D',strokeWidth:1.6,opacity:p[2]}))),
+      // heading arrow (magenta)
+      E('div',{key:'head',style:{position:'absolute',left:cx+'%',top:cy+'%',transform:'translate(-50%,-50%) rotate(82deg)',width:'2px',height:'58px',background:'linear-gradient(180deg,transparent,#E055C9)'}}),
+      E('div',{key:'headlab',style:{position:'absolute',left:(cx+9)+'%',top:(cy-13)+'%',fontFamily:"'IBM Plex Mono',monospace",fontSize:'9px',color:'#E055C9'}},'NOSE'),
+    ]);
+  }
+
+  setSurface(s){ this.setState({surface:s, handoffSent:false}); }
+  selectTrack(id){ this.setState({selectedId:id}); }
+
+  renderVals(){
+    const s=this.state;
+    const E=React.createElement;
+    const surfaces=[
+      {id:'live',num:'01',title:'Live Ops',label:'Live Operations Console'},
+      {id:'track',num:'02',title:'Track',label:'Track Detail'},
+      {id:'fusion',num:'03',title:'Fusion',label:'Sensor Fusion'},
+      {id:'gallery',num:'04',title:'Library',label:'Airframe Gallery'},
+      {id:'studio',num:'05',title:'Studio',label:'Synthetic Data Studio'},
+      {id:'eval',num:'06',title:'Eval',label:'Model Eval'},
+    ];
+    const navItems = surfaces.map(su=>{
+      const active = s.surface===su.id;
+      return {
+        num:su.num, title:su.label,
+        icon:this.navIcon(su.id,active),
+        onClick:()=>this.setSurface(su.id),
+        style:{ width:'56px', height:'52px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'3px', borderRadius:'9px', cursor:'pointer', border:'1px solid '+(active?'#1d3a3d':'transparent'), background:active?'rgba(47,212,224,.08)':'transparent', color:active?'#2FD4E0':'#6b7785', borderLeft:active?'2px solid #2FD4E0':'1px solid transparent', fontFamily:"'IBM Plex Sans',sans-serif" }
+      };
+    });
+
+    const tracksForList = s.tracks.filter(t=>!t.ghost);
+    const trackRows = tracksForList.map(tr=>{
+      const seld = tr.id===s.selectedId;
+      return {
+        id:tr.id, name:tr.name, cat:tr.cat, color:this.pc(tr.posture),
+        verdictColor: tr.posture==='unknown'? '#F2A93B' : tr.rejected? '#5C6773' : '#E6EDF3',
+        onSelect:()=>!tr.rejected&&this.selectTrack(tr.id),
+        rowStyle:{ display:'grid', gridTemplateColumns:'46px minmax(108px,1.5fr) 88px 66px 48px 82px', alignItems:'center', gap:'6px', padding:'9px 12px', cursor:tr.rejected?'default':'pointer', borderBottom:'1px solid #11191f', background:seld?'rgba(47,212,224,.06)':'transparent', borderLeft:seld?'2px solid '+this.pc(tr.posture):'2px solid transparent', opacity:tr.rejected?0.5:1 },
+        intentChip:this.intentChip(tr,true),
+        confBar:this.confBar(tr,false),
+        fanGlyph:this.fanGlyph(tr),
+        stateChip:this.stateChip(tr),
+      };
+    });
+
+    const sraw = s.tracks.find(t=>t.id===s.selectedId) || s.tracks[0];
+    const sel = {
+      id:sraw.id, name:sraw.name, cat:sraw.cat, color:this.pc(sraw.posture),
+      verdictColor: sraw.posture==='unknown'?'#F2A93B':'#E6EDF3',
+      intent:sraw.intent, spoof:!!sraw.spoof,
+      rangeTxt: sraw.range? Math.round(sraw.range)+' m':'—',
+      closingTxt: sraw.closing? (sraw.closing>0? sraw.closing:'0') : '0',
+      closingColor: sraw.closing>0? '#F2555A':'#8A97A6',
+      ttcTxt: sraw.ttc? sraw.ttc+' s':'—',
+      confBarBig:this.confBar(sraw,true),
+      openBadge:this.openBadge(sraw),
+      fanSummary: sraw.fan? this.fanSummaryText(sraw):'No multi-sensor data on this track.',
+    };
+
+    const otherMap={
+      track:['02','Track Detail / Threat Card','THE FULL VERDICT','The complete defensible answer for one track — verdict, the sensor fan, the cross-check ledger, 6DoF attitude, candidate ranking and track history.'],
+      fusion:['03','Sensor Fusion / Stack Health','THE PEACOCK TAIL','The layered sensor stack as a living system — the radial fan, the sensor roster, and the pairwise cross-check matrix that makes a spoof fool every sensor at once.'],
+      gallery:['04','Airframe Gallery / Threat Library','THE EXTENSIBLE BRAIN','The library the ID system matches against — add a threat by adding a CAD file. Cards, the add-airframe wizard, the open-set threshold tuner and embedding map.'],
+      studio:['05','Synthetic Data Studio','WHERE THE MOAT IS MADE','The front-end for the synthetic data engine — configure renders, verify labels overlay pixel-perfect, browse the dataset and its provenance.'],
+      eval:['06','Model Eval / Sim-to-Real','IS THE MODEL HONEST?','The validation surface — the scorecard, the metric plots, and the real-footage evidence including the honest IR-for-ID finding.'],
+    };
+    const o = otherMap[s.surface] || otherMap.track;
+
+    return {
+      zulu:s.zulu,
+      navItems,
+      isLive: s.surface==='live',
+      isTrack: s.surface==='track',
+      isFusion: s.surface==='fusion',
+      isGallery: s.surface==='gallery',
+      isStudio: s.surface==='studio',
+      isEval: s.surface==='eval',
+      ev:{
+        scorecard:this.evScorecard(),
+        confusion:this.evConfusion(),
+        viewpoint:this.evViewpoint(),
+        pixels:this.evPixels(),
+        kpTrend:this.evKpTrend(),
+        realVideo:this.evRealVideo(),
+        voteStrip:this.voteStrip(s.tracks.find(t=>t.id==='id07')),
+        thermal:this.evThermal(),
+        bird:this.evBird(),
+        setSynthetic:()=>this.setState({evalMode:'synthetic'}), setReal:()=>this.setState({evalMode:'real'}),
+        synthBtn:this.toggleStyle((s.evalMode||'real')==='synthetic'), realBtn:this.toggleStyle((s.evalMode||'real')==='real'),
+      },
+      st:(function(self){
+        const ov=s.overlay||{box:true,kp:true,mask:false,axes:true};
+        const tb=(on)=>self.toggleStyle(on);
+        const ovBtn=(on)=>({padding:'4px 9px',borderRadius:'6px',fontSize:'10px',fontWeight:600,cursor:'pointer',border:'1px solid '+(on?'#1d3a3d':'#1E2832'),background:on?'rgba(47,212,224,.12)':'#0E141B',color:on?'#2FD4E0':'#6b7785',fontFamily:"'IBM Plex Sans',sans-serif"});
+        const tog=(k)=>()=>self.setState(st=>({overlay:Object.assign({},st.overlay||{box:true,kp:true,mask:false,axes:true},{[k]:!(st.overlay||{box:true,kp:true,mask:false,axes:true})[k]})}));
+        return {
+          preview:self.studioPreview(), drPanel:self.drPanel(), variety:self.varietyStrip(), labelIndex:self.labelIndex(), inspector:self.frameInspector(),
+          setEO:()=>self.setState({studioBand:'eo'}), setIR:()=>self.setState({studioBand:'ir'}),
+          eoBtn:tb(s.studioBand!=='ir'), irBtn:tb(s.studioBand==='ir'),
+          setClean:()=>self.setState({studioMode:'clean'}), setDist:()=>self.setState({studioMode:'distractors'}),
+          cleanBtn:tb(s.studioMode!=='distractors'), distBtn:tb(s.studioMode==='distractors'),
+          tBox:tog('box'), tKp:tog('kp'), tMask:tog('mask'), tAxes:tog('axes'),
+          boxBtn:ovBtn(ov.box), kpBtn:ovBtn(ov.kp), maskBtn:ovBtn(ov.mask), axesBtn:ovBtn(ov.axes)
+        };
+      })(this),
+      gal:{
+        cards:this.galleryCards(),
+        tuner:this.thresholdTuner(),
+        dist:this.openSetDist(),
+        embed:this.embeddingMap(),
+        openWizard:()=>this.setState({wizardStep:1}),
+        closeWizard:()=>this.setState({wizardStep:0}),
+        wizardOpen:(s.wizardStep||0)>0,
+        wizard:this.addWizard(),
+      },
+      backLive:()=>this.setSurface('live'),
+      det:this.detailData(sraw),
+      fus:{
+        coverage:this.coverageMeter(),
+        fan:this.fusionFan(sraw),
+        roster:this.sensorRoster(),
+        matrix:this.crossMatrix(),
+        explainer:this.fusionExplainer(),
+        setEO:()=>this.setState({band:'eo'}), setIR:()=>this.setState({band:'ir'}), setFused:()=>this.setState({band:'fused'}),
+        eoBtn:this.toggleStyle(s.band==='eo'), irBtn:this.toggleStyle(s.band==='ir'), fusedBtn:this.toggleStyle(s.band==='fused'),
+        showFused: s.band==='fused',
+        opacity: s.opacity==null?55:s.opacity,
+        opVal: ((s.opacity==null?55:s.opacity)/100*0.85+0.12).toFixed(2),
+        setOpacity:(e)=>this.setState({opacity:parseInt(e.target.value,10)}),
+      },
+      isMap: s.view==='map',
+      isFeed: s.view==='feed',
+      setMap:()=>this.setState({view:'map'}),
+      setFeed:()=>this.setState({view:'feed'}),
+      mapBtn:this.toggleStyle(s.view==='map'),
+      feedBtn:this.toggleStyle(s.view==='feed'),
+      mapMarkers:this.mapMarkers(),
+      feedOverlay:this.feedOverlay(),
+      trackRows,
+      trackCount: tracksForList.filter(t=>!t.rejected).length+' active · 1 rejected',
+      sel,
+      attitudeDial:this.attitudeDial(sraw),
+      miniFan:this.miniFan(sraw),
+      goTrack:()=>this.setSurface('track'),
+      handoff:()=>this.setState({handoffSent:true}),
+      handoffLabel: s.handoffSent? 'HANDED OFF — AWAITING DECISION-MAKER' : 'HAND OFF TO DECISION-MAKER',
+      handoffStyle:{ width:'100%', height:'44px', borderRadius:'9px', cursor:'pointer', fontFamily:"'IBM Plex Sans',sans-serif", fontSize:'12px', fontWeight:700, letterSpacing:'.05em', border:'1px solid '+(s.handoffSent?'#1f4a3a':'#1d3a3d'), color:s.handoffSent?'#4FD995':'#06222a', background:s.handoffSent?'rgba(79,217,149,.1)':'linear-gradient(180deg,#2FD4E0,#1d9aa6)' },
+      otherNum:o[0], otherTitle:o[1], otherSub:o[2], otherDesc:o[3],
+    };
+  }
+
+  fanSummaryText(tr){
+    const f=tr.fan; const live=[]; if(f.eo!=='absent')live.push('EO'); if(f.ir!=='absent')live.push('IR'); if(f.motion!=='absent')live.push('motion');
+    const planned=[]; if(f.radar==='absent')planned.push('radar'); if(f.rf==='absent')planned.push('RF');
+    let agree=Object.values(f).filter(v=>v==='agree').length;
+    return agree+' cues corroborating · '+live.join(', ')+' active'+(planned.length?' · '+planned.join('/')+' planned':'');
+  }
+  toggleStyle(active){
+    return { padding:'5px 12px', borderRadius:'5px', fontSize:'10px', fontWeight:600, letterSpacing:'.06em', cursor:'pointer', border:'none', fontFamily:"'IBM Plex Sans',sans-serif", background:active?'#2FD4E0':'transparent', color:active?'#06222a':'#8A97A6' };
+  }
+}
+</script>
+</body>
+</html>
